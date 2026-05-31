@@ -1,6 +1,12 @@
 # OPC Assistant Workspace
 
-This repository contains the OPC assistant prototype workspace:
+This repository contains the OPC assistant prototype workspace.
+
+The product architecture document is kept in:
+
+- `OPC助手 技术选型与框架设计文档 v2.0.md`
+
+## Projects
 
 - `stream-project-management/` - Flutter app for local-first project and task management.
 - `cloudflare-edge/` - Cloudflare Worker relay for temporary share, sync, file, log, and KB APIs.
@@ -32,14 +38,16 @@ cd stream-project-management
 flutter pub get
 dart analyze
 flutter test
-flutter run -d chrome
+flutter build apk --debug
 ```
 
 Current known state:
 
 - Android and Chrome toolchains are installed.
+- Android debug APK builds successfully.
 - Full Xcode is still required for iOS/macOS builds.
-- Tests run but still need proper platform/repository isolation before they can be treated as a quality gate.
+- `flutter test` passes, but service/repository tests that need the native `sqflite_sqlcipher` plugin are currently skipped.
+- `dart analyze` still reports existing lint and cleanup issues that should be triaged before feature work.
 
 Install Xcode manually from the App Store or Apple Developer, then run:
 
@@ -67,6 +75,11 @@ wrangler r2 bucket create opc-kb
 ```
 
 Then fill the generated IDs in `cloudflare-edge/wrangler.toml`.
+
+Local secret examples are documented in:
+
+- `cloudflare-edge/.dev.vars.example`
+- `stream-project-management/.env.example`
 
 ## React Native Backup
 
