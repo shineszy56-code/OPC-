@@ -1,0 +1,53 @@
+.DS_Store
+
+# Node / Expo
+node_modules/
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.tsbuildinfo
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.claude/
+.codebuddy/
+
+# Native build artifacts and signing material
+*.jks
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+*.keystore
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+*.tmp

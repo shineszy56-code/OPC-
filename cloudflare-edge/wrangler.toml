@@ -1,0 +1,31 @@
+name = "opc-edge"
+main = "workers/index.js"
+compatibility_date = "2024-09-23"
+account_id = ""
+
+# KV 和 R2 绑定在登录并创建资源后填入，见 README
+# [[kv_namespaces]]
+# binding = "AI_OPC_SHARE"
+# id = "<通过 wrangler kv namespace create AI_OPC_SHARE 获取>"
+# preview_id = "<通过 wrangler kv namespace create AI_OPC_SHARE --preview 获取>"
+
+# [[kv_namespaces]]
+# binding = "AI_OPC_SYNC"
+# id = "<通过 wrangler kv namespace create AI_OPC_SYNC 获取>"
+# preview_id = "<通过 wrangler kv namespace create AI_OPC_SYNC --preview 获取>"
+
+# [[r2_buckets]]
+# binding = "AI_OPC_FILES"
+# bucket_name = "opc-files"
+
+# [[r2_buckets]]
+# binding = "OPC_KB"
+# bucket_name = "opc-kb"
+
+[triggers]
+crons = ["0 5 * * *"]
+
+[env.production]
+name = "opc-edge-prod"
+route = "api.youropc.app/*"
+zone_id = ""
