@@ -6,33 +6,46 @@ import '../data/models/project.dart';
 import '../data/models/task.dart';
 import '../services/task_service.dart';
 
-
 /// 项目任务列表
-final projectTasksProvider = FutureProvider.family<List<Task>, String>((ref, projectId) async {
+final projectTasksProvider = FutureProvider.family<List<Task>, String>((
+  ref,
+  projectId,
+) async {
   final service = TaskService();
   return service.getProjectTasks(projectId);
 });
 
 /// 任务详情
-final taskDetailProvider = FutureProvider.family<Task?, String>((ref, taskId) async {
+final taskDetailProvider = FutureProvider.family<Task?, String>((
+  ref,
+  taskId,
+) async {
   final service = TaskService();
   return service.getTaskById(taskId);
 });
 
 /// 即将到期任务
-final upcomingTasksProvider = FutureProvider.family<List<Task>, String>((ref, projectId) async {
+final upcomingTasksProvider = FutureProvider.family<List<Task>, String>((
+  ref,
+  projectId,
+) async {
   final service = TaskService();
   return service.getUpcomingTasks(projectId);
 });
 
 /// 逾期任务
-final overdueTasksProvider = FutureProvider.family<List<Task>, String>((ref, projectId) async {
+final overdueTasksProvider = FutureProvider.family<List<Task>, String>((
+  ref,
+  projectId,
+) async {
   final service = TaskService();
   return service.getOverdueTasks(projectId);
 });
 
 /// 任务操作 Notifier
-final taskNotifierProvider = NotifierProvider<TaskNotifier, void>(TaskNotifier.new);
+final taskNotifierProvider = NotifierProvider<TaskNotifier, void>(
+  TaskNotifier.new,
+);
 
 class TaskNotifier extends Notifier<void> {
   @override

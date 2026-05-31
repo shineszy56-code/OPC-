@@ -8,7 +8,9 @@ final integrationServiceProvider = Provider<IntegrationService>((ref) {
 });
 
 /// 集成状态提供者
-final integrationStatusProvider = FutureProvider<IntegrationStatus>((ref) async {
+final integrationStatusProvider = FutureProvider<IntegrationStatus>((
+  ref,
+) async {
   final service = ref.watch(integrationServiceProvider);
   return service.getStatus();
 });

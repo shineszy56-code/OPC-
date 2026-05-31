@@ -58,12 +58,20 @@ class MemberService {
   }
 
   /// 更新成员权限
-  Future<void> updatePermission(String memberId, MemberPermission newPermission) async {
+  Future<void> updatePermission(
+    String memberId,
+    MemberPermission newPermission,
+  ) async {
     final member = await _memberRepo.getById(memberId);
     if (member == null) return;
 
     await _memberRepo.updatePermission(memberId, newPermission);
-    await _logMemberAction(member, LogAction.update, '权限变更', newPermission.name);
+    await _logMemberAction(
+      member,
+      LogAction.update,
+      '权限变更',
+      newPermission.name,
+    );
     await _enqueue('update', member.copyWith(permission: newPermission));
   }
 
@@ -115,17 +123,19 @@ class MemberService {
     String value,
   ) async {
     final deviceId = await _keyManager.getDeviceId();
-    await _logRepo.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: member.projectId,
-      memberId: deviceId,
-      memberName: '我',
-      action: action,
-      field: field,
-      newValue: value,
-      timestamp: DateTime.now().millisecondsSinceEpoch,
-      synced: false,
-    ));
+    await _logRepo.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: member.projectId,
+        memberId: deviceId,
+        memberName: '我',
+        action: action,
+        field: field,
+        newValue: value,
+        timestamp: DateTime.now().millisecondsSinceEpoch,
+        synced: false,
+      ),
+    );
   }
 
   /// 加入离线队列

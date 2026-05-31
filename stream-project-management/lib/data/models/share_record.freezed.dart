@@ -12,7 +12,8 @@ part of 'share_record.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ShareRecord _$ShareRecordFromJson(Map<String, dynamic> json) {
   return _ShareRecord.fromJson(json);
@@ -56,19 +57,21 @@ mixin _$ShareRecord {
 /// @nodoc
 abstract class $ShareRecordCopyWith<$Res> {
   factory $ShareRecordCopyWith(
-          ShareRecord value, $Res Function(ShareRecord) then) =
-      _$ShareRecordCopyWithImpl<$Res, ShareRecord>;
+    ShareRecord value,
+    $Res Function(ShareRecord) then,
+  ) = _$ShareRecordCopyWithImpl<$Res, ShareRecord>;
   @useResult
-  $Res call(
-      {String id,
-      String? projectId,
-      String? taskId,
-      ShareType type,
-      MemberPermission permission,
-      int expiresAt,
-      String? cloudflareKey,
-      String? peerId,
-      int createdAt});
+  $Res call({
+    String id,
+    String? projectId,
+    String? taskId,
+    ShareType type,
+    MemberPermission permission,
+    int expiresAt,
+    String? cloudflareKey,
+    String? peerId,
+    int createdAt,
+  });
 }
 
 /// @nodoc
@@ -94,44 +97,47 @@ class _$ShareRecordCopyWithImpl<$Res, $Val extends ShareRecord>
     Object? peerId = freezed,
     Object? createdAt = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      projectId: freezed == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taskId: freezed == taskId
-          ? _value.taskId
-          : taskId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ShareType,
-      permission: null == permission
-          ? _value.permission
-          : permission // ignore: cast_nullable_to_non_nullable
-              as MemberPermission,
-      expiresAt: null == expiresAt
-          ? _value.expiresAt
-          : expiresAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      cloudflareKey: freezed == cloudflareKey
-          ? _value.cloudflareKey
-          : cloudflareKey // ignore: cast_nullable_to_non_nullable
-              as String?,
-      peerId: freezed == peerId
-          ? _value.peerId
-          : peerId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            projectId: freezed == projectId
+                ? _value.projectId
+                : projectId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            taskId: freezed == taskId
+                ? _value.taskId
+                : taskId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as ShareType,
+            permission: null == permission
+                ? _value.permission
+                : permission // ignore: cast_nullable_to_non_nullable
+                      as MemberPermission,
+            expiresAt: null == expiresAt
+                ? _value.expiresAt
+                : expiresAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+            cloudflareKey: freezed == cloudflareKey
+                ? _value.cloudflareKey
+                : cloudflareKey // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            peerId: freezed == peerId
+                ? _value.peerId
+                : peerId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -139,20 +145,22 @@ class _$ShareRecordCopyWithImpl<$Res, $Val extends ShareRecord>
 abstract class _$$ShareRecordImplCopyWith<$Res>
     implements $ShareRecordCopyWith<$Res> {
   factory _$$ShareRecordImplCopyWith(
-          _$ShareRecordImpl value, $Res Function(_$ShareRecordImpl) then) =
-      __$$ShareRecordImplCopyWithImpl<$Res>;
+    _$ShareRecordImpl value,
+    $Res Function(_$ShareRecordImpl) then,
+  ) = __$$ShareRecordImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String? projectId,
-      String? taskId,
-      ShareType type,
-      MemberPermission permission,
-      int expiresAt,
-      String? cloudflareKey,
-      String? peerId,
-      int createdAt});
+  $Res call({
+    String id,
+    String? projectId,
+    String? taskId,
+    ShareType type,
+    MemberPermission permission,
+    int expiresAt,
+    String? cloudflareKey,
+    String? peerId,
+    int createdAt,
+  });
 }
 
 /// @nodoc
@@ -160,8 +168,9 @@ class __$$ShareRecordImplCopyWithImpl<$Res>
     extends _$ShareRecordCopyWithImpl<$Res, _$ShareRecordImpl>
     implements _$$ShareRecordImplCopyWith<$Res> {
   __$$ShareRecordImplCopyWithImpl(
-      _$ShareRecordImpl _value, $Res Function(_$ShareRecordImpl) _then)
-      : super(_value, _then);
+    _$ShareRecordImpl _value,
+    $Res Function(_$ShareRecordImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -176,60 +185,63 @@ class __$$ShareRecordImplCopyWithImpl<$Res>
     Object? peerId = freezed,
     Object? createdAt = null,
   }) {
-    return _then(_$ShareRecordImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      projectId: freezed == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taskId: freezed == taskId
-          ? _value.taskId
-          : taskId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ShareType,
-      permission: null == permission
-          ? _value.permission
-          : permission // ignore: cast_nullable_to_non_nullable
-              as MemberPermission,
-      expiresAt: null == expiresAt
-          ? _value.expiresAt
-          : expiresAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      cloudflareKey: freezed == cloudflareKey
-          ? _value.cloudflareKey
-          : cloudflareKey // ignore: cast_nullable_to_non_nullable
-              as String?,
-      peerId: freezed == peerId
-          ? _value.peerId
-          : peerId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$ShareRecordImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        projectId: freezed == projectId
+            ? _value.projectId
+            : projectId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        taskId: freezed == taskId
+            ? _value.taskId
+            : taskId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as ShareType,
+        permission: null == permission
+            ? _value.permission
+            : permission // ignore: cast_nullable_to_non_nullable
+                  as MemberPermission,
+        expiresAt: null == expiresAt
+            ? _value.expiresAt
+            : expiresAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+        cloudflareKey: freezed == cloudflareKey
+            ? _value.cloudflareKey
+            : cloudflareKey // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        peerId: freezed == peerId
+            ? _value.peerId
+            : peerId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ShareRecordImpl implements _ShareRecord {
-  const _$ShareRecordImpl(
-      {required this.id,
-      this.projectId,
-      this.taskId,
-      this.type = ShareType.cloudflare,
-      this.permission = MemberPermission.read,
-      required this.expiresAt,
-      this.cloudflareKey,
-      this.peerId,
-      required this.createdAt});
+  const _$ShareRecordImpl({
+    required this.id,
+    this.projectId,
+    this.taskId,
+    this.type = ShareType.cloudflare,
+    this.permission = MemberPermission.read,
+    required this.expiresAt,
+    this.cloudflareKey,
+    this.peerId,
+    required this.createdAt,
+  });
 
   factory _$ShareRecordImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShareRecordImplFromJson(json);
@@ -300,8 +312,18 @@ class _$ShareRecordImpl implements _ShareRecord {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, projectId, taskId, type,
-      permission, expiresAt, cloudflareKey, peerId, createdAt);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    projectId,
+    taskId,
+    type,
+    permission,
+    expiresAt,
+    cloudflareKey,
+    peerId,
+    createdAt,
+  );
 
   @JsonKey(ignore: true)
   @override
@@ -311,61 +333,51 @@ class _$ShareRecordImpl implements _ShareRecord {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ShareRecordImplToJson(
-      this,
-    );
+    return _$$ShareRecordImplToJson(this);
   }
 }
 
 abstract class _ShareRecord implements ShareRecord {
-  const factory _ShareRecord(
-      {required final String id,
-      final String? projectId,
-      final String? taskId,
-      final ShareType type,
-      final MemberPermission permission,
-      required final int expiresAt,
-      final String? cloudflareKey,
-      final String? peerId,
-      required final int createdAt}) = _$ShareRecordImpl;
+  const factory _ShareRecord({
+    required final String id,
+    final String? projectId,
+    final String? taskId,
+    final ShareType type,
+    final MemberPermission permission,
+    required final int expiresAt,
+    final String? cloudflareKey,
+    final String? peerId,
+    required final int createdAt,
+  }) = _$ShareRecordImpl;
 
   factory _ShareRecord.fromJson(Map<String, dynamic> json) =
       _$ShareRecordImpl.fromJson;
 
   @override
-
   /// UUID v4
   String get id;
   @override
-
   /// 关联项目 ID
   String? get projectId;
   @override
-
   /// 关联任务 ID
   String? get taskId;
   @override
-
   /// 分享类型
   ShareType get type;
   @override
-
   /// 权限级别
   MemberPermission get permission;
   @override
-
   /// 过期时间（Unix timestamp）
   int get expiresAt;
   @override
-
   /// Cloudflare KV 中的键
   String? get cloudflareKey;
   @override
-
   /// P2P 连接 ID
   String? get peerId;
   @override
-
   /// 创建时间
   int get createdAt;
   @override

@@ -73,7 +73,8 @@ class AIGateway {
     required Map<String, dynamic> jsonSchema,
     String? systemPrompt,
   }) async {
-    final schemaPrompt = '''
+    final schemaPrompt =
+        '''
 $prompt
 
 你必须返回严格符合以下 JSON Schema 的 JSON 对象，不要包含任何其他文字：
@@ -83,8 +84,7 @@ ${json.encode(jsonSchema)}
 
     final response = await chatCompletion(
       prompt: schemaPrompt,
-      systemPrompt: systemPrompt ??
-          '你是一个 JSON 输出助手，只返回有效的 JSON，不要有任何其他文字。',
+      systemPrompt: systemPrompt ?? '你是一个 JSON 输出助手，只返回有效的 JSON，不要有任何其他文字。',
     );
 
     try {

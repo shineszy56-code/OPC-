@@ -25,7 +25,10 @@ class TaskDetailScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('任务详情', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        title: const Text(
+          '任务详情',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
@@ -42,7 +45,9 @@ class TaskDetailScreen extends ConsumerWidget {
         ],
       ),
       body: taskAsync.when(
-        data: (task) => task != null ? _buildBody(context, ref, task) : _buildNotFound(context),
+        data: (task) => task != null
+            ? _buildBody(context, ref, task)
+            : _buildNotFound(context),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, _) => _buildError(context, error),
       ),
@@ -66,7 +71,9 @@ class TaskDetailScreen extends ConsumerWidget {
           StatusSelector(
             currentStatus: task.status,
             onChanged: (newStatus) {
-              ref.read(taskNotifierProvider.notifier).updateStatus(taskId, newStatus);
+              ref
+                  .read(taskNotifierProvider.notifier)
+                  .updateStatus(taskId, newStatus);
             },
           ),
           const SizedBox(height: 12),
@@ -74,13 +81,18 @@ class TaskDetailScreen extends ConsumerWidget {
           PrioritySelector(
             currentPriority: task.priority,
             onChanged: (newPriority) {
-              ref.read(taskNotifierProvider.notifier).updatePriority(taskId, newPriority);
+              ref
+                  .read(taskNotifierProvider.notifier)
+                  .updatePriority(taskId, newPriority);
             },
           ),
           const SizedBox(height: 12),
           // 任务描述
           if (task.description.isNotEmpty) ...[
-            const Text('描述', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            const Text(
+              '描述',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 4),
             Text(
               task.description,
@@ -90,17 +102,25 @@ class TaskDetailScreen extends ConsumerWidget {
           ],
           // 截止日期
           if (task.dueDate != null) ...[
-            const Text('截止日期', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            const Text(
+              '截止日期',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 4),
             Text(
-              DateFormat('yyyy-MM-dd').format(DateTime.fromMillisecondsSinceEpoch(task.dueDate!)),
+              DateFormat(
+                'yyyy-MM-dd',
+              ).format(DateTime.fromMillisecondsSinceEpoch(task.dueDate!)),
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 12),
           ],
           // 负责人
           if (task.assigneeId != null) ...[
-            const Text('负责人', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            const Text(
+              '负责人',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 4),
             Text(
               task.assigneeId!,
@@ -110,7 +130,10 @@ class TaskDetailScreen extends ConsumerWidget {
           ],
           // AI 状态
           if (task.aiExecutable) ...[
-            const Text('AI 状态', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            const Text(
+              'AI 状态',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 4),
             _buildAIStatus(context, task.aiStatus),
             const SizedBox(height: 12),
@@ -125,10 +148,10 @@ class TaskDetailScreen extends ConsumerWidget {
     final color = status == AIStatus.completed
         ? const Color(0xFF4CAF50)
         : status == AIStatus.running
-            ? const Color(0xFF2196F3)
-            : status == AIStatus.failed
-                ? const Color(0xFFF44336)
-                : Theme.of(context).colorScheme.onSurface.withOpacity(0.6);
+        ? const Color(0xFF2196F3)
+        : status == AIStatus.failed
+        ? const Color(0xFFF44336)
+        : Theme.of(context).colorScheme.onSurface.withOpacity(0.6);
 
     return Row(
       children: [
@@ -136,10 +159,10 @@ class TaskDetailScreen extends ConsumerWidget {
           status == AIStatus.completed
               ? Icons.check_circle
               : status == AIStatus.running
-                  ? Icons.hourglass_empty
-                  : status == AIStatus.failed
-                      ? Icons.error
-                      : Icons.info,
+              ? Icons.hourglass_empty
+              : status == AIStatus.failed
+              ? Icons.error
+              : Icons.info,
           color: color,
           size: 16,
         ),
@@ -148,10 +171,10 @@ class TaskDetailScreen extends ConsumerWidget {
           status == AIStatus.idle
               ? '空闲'
               : status == AIStatus.running
-                  ? '运行中'
-                  : status == AIStatus.completed
-                      ? '已完成'
-                      : '失败',
+              ? '运行中'
+              : status == AIStatus.completed
+              ? '已完成'
+              : '失败',
           style: TextStyle(color: color, fontSize: 16),
         ),
       ],
@@ -166,10 +189,7 @@ class TaskDetailScreen extends ConsumerWidget {
         children: [
           const Text('😞', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 16),
-          Text(
-            '任务未找到',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          Text('任务未找到', style: Theme.of(context).textTheme.headlineSmall),
         ],
       ),
     );
@@ -183,10 +203,7 @@ class TaskDetailScreen extends ConsumerWidget {
         children: [
           const Text('😞', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 16),
-          Text(
-            '加载失败',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          Text('加载失败', style: Theme.of(context).textTheme.headlineSmall),
           const SizedBox(height: 8),
           Text(
             error.toString(),
@@ -212,7 +229,9 @@ class TaskDetailScreen extends ConsumerWidget {
           ),
           TextButton(
             onPressed: () {
-              ref.read(taskNotifierProvider.notifier).deleteTask(taskId, ref.read(selectedProjectIdProvider)!);
+              ref
+                  .read(taskNotifierProvider.notifier)
+                  .deleteTask(taskId, ref.read(selectedProjectIdProvider)!);
               Navigator.of(context).pop();
             },
             child: const Text('删除', style: TextStyle(color: Colors.red)),

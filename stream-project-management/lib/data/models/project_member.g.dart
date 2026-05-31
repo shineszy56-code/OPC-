@@ -13,7 +13,7 @@ _$ProjectMemberImpl _$$ProjectMemberImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       permission:
           $enumDecodeNullable(_$MemberPermissionEnumMap, json['permission']) ??
-              MemberPermission.read,
+          MemberPermission.read,
       shareId: json['shareId'] as String? ?? '',
       lastActiveAt: (json['lastActiveAt'] as num).toInt(),
       isOnline: json['isOnline'] as bool? ?? false,

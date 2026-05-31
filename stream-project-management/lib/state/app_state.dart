@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 /// App 全局状态
 final appStateProvider = Provider<AppState>((ref) {
   return AppState();
@@ -46,8 +45,9 @@ class AppState {
 }
 
 /// App 状态 Notifier
-final appStateNotifierProvider =
-    NotifierProvider<AppStateNotifier, AppState>(AppStateNotifier.new);
+final appStateNotifierProvider = NotifierProvider<AppStateNotifier, AppState>(
+  AppStateNotifier.new,
+);
 
 class AppStateNotifier extends Notifier<AppState> {
   @override
@@ -60,7 +60,8 @@ class AppStateNotifier extends Notifier<AppState> {
     state = state.copyWith(
       themeMode: state.themeMode == ThemeMode.dark
           ? ThemeMode.light
-          : ThemeMode.dark);
+          : ThemeMode.dark,
+    );
   }
 
   /// 设置主题模式

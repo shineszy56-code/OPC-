@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/models/project.dart';
 import '../services/project_service.dart';
 
-
 /// 项目列表状态
 final projectListProvider = FutureProvider<List<Project>>((ref) async {
   final service = ProjectService();
@@ -21,8 +20,7 @@ final activeProjectCountProvider = FutureProvider<int>((ref) async {
 final projectSearchQueryProvider = StateProvider<String>((ref) => '');
 
 /// 搜索结果
-final projectSearchResultProvider =
-    FutureProvider<List<Project>>((ref) async {
+final projectSearchResultProvider = FutureProvider<List<Project>>((ref) async {
   final query = ref.watch(projectSearchQueryProvider);
   if (query.isEmpty) return [];
 
@@ -43,8 +41,9 @@ final selectedProjectProvider = FutureProvider<Project?>((ref) async {
 });
 
 /// 项目操作 Notifier
-final projectNotifierProvider =
-    NotifierProvider<ProjectNotifier, void>(ProjectNotifier.new);
+final projectNotifierProvider = NotifierProvider<ProjectNotifier, void>(
+  ProjectNotifier.new,
+);
 
 class ProjectNotifier extends Notifier<void> {
   @override

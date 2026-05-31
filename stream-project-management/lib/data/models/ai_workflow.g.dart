@@ -7,16 +7,15 @@ part of 'ai_workflow.dart';
 // **************************************************************************
 
 _$AIStepImpl _$$AIStepImplFromJson(Map<String, dynamic> json) => _$AIStepImpl(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      description: json['description'] as String? ?? '',
-      type: $enumDecodeNullable(_$StepTypeEnumMap, json['type']) ??
-          StepType.prompt,
-      promptTemplate: json['promptTemplate'] as String? ?? '',
-      model: json['model'] as String?,
-      passOutput: json['passOutput'] as bool? ?? true,
-      timeoutSeconds: (json['timeoutSeconds'] as num?)?.toInt() ?? 60,
-    );
+  id: json['id'] as String,
+  name: json['name'] as String,
+  description: json['description'] as String? ?? '',
+  type: $enumDecodeNullable(_$StepTypeEnumMap, json['type']) ?? StepType.prompt,
+  promptTemplate: json['promptTemplate'] as String? ?? '',
+  model: json['model'] as String?,
+  passOutput: json['passOutput'] as bool? ?? true,
+  timeoutSeconds: (json['timeoutSeconds'] as num?)?.toInt() ?? 60,
+);
 
 Map<String, dynamic> _$$AIStepImplToJson(_$AIStepImpl instance) =>
     <String, dynamic>{
@@ -38,18 +37,18 @@ const _$StepTypeEnumMap = {
 };
 
 _$WorkflowTriggerImpl _$$WorkflowTriggerImplFromJson(
-        Map<String, dynamic> json) =>
-    _$WorkflowTriggerImpl(
-      type: $enumDecode(_$WorkflowTriggerTypeEnumMap, json['type']),
-      condition: json['condition'] as String?,
-    );
+  Map<String, dynamic> json,
+) => _$WorkflowTriggerImpl(
+  type: $enumDecode(_$WorkflowTriggerTypeEnumMap, json['type']),
+  condition: json['condition'] as String?,
+);
 
 Map<String, dynamic> _$$WorkflowTriggerImplToJson(
-        _$WorkflowTriggerImpl instance) =>
-    <String, dynamic>{
-      'type': _$WorkflowTriggerTypeEnumMap[instance.type]!,
-      'condition': instance.condition,
-    };
+  _$WorkflowTriggerImpl instance,
+) => <String, dynamic>{
+  'type': _$WorkflowTriggerTypeEnumMap[instance.type]!,
+  'condition': instance.condition,
+};
 
 const _$WorkflowTriggerTypeEnumMap = {
   WorkflowTriggerType.manual: 'manual',
@@ -63,9 +62,11 @@ _$AIWorkflowImpl _$$AIWorkflowImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String? ?? '',
-      trigger:
-          WorkflowTrigger.fromJson(json['trigger'] as Map<String, dynamic>),
-      steps: (json['steps'] as List<dynamic>?)
+      trigger: WorkflowTrigger.fromJson(
+        json['trigger'] as Map<String, dynamic>,
+      ),
+      steps:
+          (json['steps'] as List<dynamic>?)
               ?.map((e) => AIStep.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],

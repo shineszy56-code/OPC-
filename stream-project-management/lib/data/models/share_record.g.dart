@@ -11,11 +11,12 @@ _$ShareRecordImpl _$$ShareRecordImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       projectId: json['projectId'] as String?,
       taskId: json['taskId'] as String?,
-      type: $enumDecodeNullable(_$ShareTypeEnumMap, json['type']) ??
+      type:
+          $enumDecodeNullable(_$ShareTypeEnumMap, json['type']) ??
           ShareType.cloudflare,
       permission:
           $enumDecodeNullable(_$MemberPermissionEnumMap, json['permission']) ??
-              MemberPermission.read,
+          MemberPermission.read,
       expiresAt: (json['expiresAt'] as num).toInt(),
       cloudflareKey: json['cloudflareKey'] as String?,
       peerId: json['peerId'] as String?,

@@ -12,7 +12,8 @@ part of 'ai_workflow.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 AIStep _$AIStepFromJson(Map<String, dynamic> json) {
   return _AIStep.fromJson(json);
@@ -54,15 +55,16 @@ abstract class $AIStepCopyWith<$Res> {
   factory $AIStepCopyWith(AIStep value, $Res Function(AIStep) then) =
       _$AIStepCopyWithImpl<$Res, AIStep>;
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String description,
-      StepType type,
-      String promptTemplate,
-      String? model,
-      bool passOutput,
-      int timeoutSeconds});
+  $Res call({
+    String id,
+    String name,
+    String description,
+    StepType type,
+    String promptTemplate,
+    String? model,
+    bool passOutput,
+    int timeoutSeconds,
+  });
 }
 
 /// @nodoc
@@ -87,59 +89,64 @@ class _$AIStepCopyWithImpl<$Res, $Val extends AIStep>
     Object? passOutput = null,
     Object? timeoutSeconds = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as StepType,
-      promptTemplate: null == promptTemplate
-          ? _value.promptTemplate
-          : promptTemplate // ignore: cast_nullable_to_non_nullable
-              as String,
-      model: freezed == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as String?,
-      passOutput: null == passOutput
-          ? _value.passOutput
-          : passOutput // ignore: cast_nullable_to_non_nullable
-              as bool,
-      timeoutSeconds: null == timeoutSeconds
-          ? _value.timeoutSeconds
-          : timeoutSeconds // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            description: null == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as StepType,
+            promptTemplate: null == promptTemplate
+                ? _value.promptTemplate
+                : promptTemplate // ignore: cast_nullable_to_non_nullable
+                      as String,
+            model: freezed == model
+                ? _value.model
+                : model // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            passOutput: null == passOutput
+                ? _value.passOutput
+                : passOutput // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            timeoutSeconds: null == timeoutSeconds
+                ? _value.timeoutSeconds
+                : timeoutSeconds // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$AIStepImplCopyWith<$Res> implements $AIStepCopyWith<$Res> {
   factory _$$AIStepImplCopyWith(
-          _$AIStepImpl value, $Res Function(_$AIStepImpl) then) =
-      __$$AIStepImplCopyWithImpl<$Res>;
+    _$AIStepImpl value,
+    $Res Function(_$AIStepImpl) then,
+  ) = __$$AIStepImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String description,
-      StepType type,
-      String promptTemplate,
-      String? model,
-      bool passOutput,
-      int timeoutSeconds});
+  $Res call({
+    String id,
+    String name,
+    String description,
+    StepType type,
+    String promptTemplate,
+    String? model,
+    bool passOutput,
+    int timeoutSeconds,
+  });
 }
 
 /// @nodoc
@@ -147,8 +154,9 @@ class __$$AIStepImplCopyWithImpl<$Res>
     extends _$AIStepCopyWithImpl<$Res, _$AIStepImpl>
     implements _$$AIStepImplCopyWith<$Res> {
   __$$AIStepImplCopyWithImpl(
-      _$AIStepImpl _value, $Res Function(_$AIStepImpl) _then)
-      : super(_value, _then);
+    _$AIStepImpl _value,
+    $Res Function(_$AIStepImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -162,55 +170,58 @@ class __$$AIStepImplCopyWithImpl<$Res>
     Object? passOutput = null,
     Object? timeoutSeconds = null,
   }) {
-    return _then(_$AIStepImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as StepType,
-      promptTemplate: null == promptTemplate
-          ? _value.promptTemplate
-          : promptTemplate // ignore: cast_nullable_to_non_nullable
-              as String,
-      model: freezed == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as String?,
-      passOutput: null == passOutput
-          ? _value.passOutput
-          : passOutput // ignore: cast_nullable_to_non_nullable
-              as bool,
-      timeoutSeconds: null == timeoutSeconds
-          ? _value.timeoutSeconds
-          : timeoutSeconds // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$AIStepImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as StepType,
+        promptTemplate: null == promptTemplate
+            ? _value.promptTemplate
+            : promptTemplate // ignore: cast_nullable_to_non_nullable
+                  as String,
+        model: freezed == model
+            ? _value.model
+            : model // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        passOutput: null == passOutput
+            ? _value.passOutput
+            : passOutput // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        timeoutSeconds: null == timeoutSeconds
+            ? _value.timeoutSeconds
+            : timeoutSeconds // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$AIStepImpl implements _AIStep {
-  const _$AIStepImpl(
-      {required this.id,
-      required this.name,
-      this.description = '',
-      this.type = StepType.prompt,
-      this.promptTemplate = '',
-      this.model,
-      this.passOutput = true,
-      this.timeoutSeconds = 60});
+  const _$AIStepImpl({
+    required this.id,
+    required this.name,
+    this.description = '',
+    this.type = StepType.prompt,
+    this.promptTemplate = '',
+    this.model,
+    this.passOutput = true,
+    this.timeoutSeconds = 60,
+  });
 
   factory _$AIStepImpl.fromJson(Map<String, dynamic> json) =>
       _$$AIStepImplFromJson(json);
@@ -278,8 +289,17 @@ class _$AIStepImpl implements _AIStep {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, type,
-      promptTemplate, model, passOutput, timeoutSeconds);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    name,
+    description,
+    type,
+    promptTemplate,
+    model,
+    passOutput,
+    timeoutSeconds,
+  );
 
   @JsonKey(ignore: true)
   @override
@@ -289,55 +309,46 @@ class _$AIStepImpl implements _AIStep {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AIStepImplToJson(
-      this,
-    );
+    return _$$AIStepImplToJson(this);
   }
 }
 
 abstract class _AIStep implements AIStep {
-  const factory _AIStep(
-      {required final String id,
-      required final String name,
-      final String description,
-      final StepType type,
-      final String promptTemplate,
-      final String? model,
-      final bool passOutput,
-      final int timeoutSeconds}) = _$AIStepImpl;
+  const factory _AIStep({
+    required final String id,
+    required final String name,
+    final String description,
+    final StepType type,
+    final String promptTemplate,
+    final String? model,
+    final bool passOutput,
+    final int timeoutSeconds,
+  }) = _$AIStepImpl;
 
   factory _AIStep.fromJson(Map<String, dynamic> json) = _$AIStepImpl.fromJson;
 
   @override
-
   /// 步骤 ID
   String get id;
   @override
-
   /// 步骤名称
   String get name;
   @override
-
   /// 步骤描述
   String get description;
   @override
-
   /// 步骤类型
   StepType get type;
   @override
-
   /// 提示词模板
   String get promptTemplate;
   @override
-
   /// 模型选择（可选，不填则使用路由策略）
   String? get model;
   @override
-
   /// 步骤输出是否作为下一步的输入
   bool get passOutput;
   @override
-
   /// 超时时间（秒）
   int get timeoutSeconds;
   @override
@@ -367,8 +378,9 @@ mixin _$WorkflowTrigger {
 /// @nodoc
 abstract class $WorkflowTriggerCopyWith<$Res> {
   factory $WorkflowTriggerCopyWith(
-          WorkflowTrigger value, $Res Function(WorkflowTrigger) then) =
-      _$WorkflowTriggerCopyWithImpl<$Res, WorkflowTrigger>;
+    WorkflowTrigger value,
+    $Res Function(WorkflowTrigger) then,
+  ) = _$WorkflowTriggerCopyWithImpl<$Res, WorkflowTrigger>;
   @useResult
   $Res call({WorkflowTriggerType type, String? condition});
 }
@@ -385,29 +397,30 @@ class _$WorkflowTriggerCopyWithImpl<$Res, $Val extends WorkflowTrigger>
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? type = null,
-    Object? condition = freezed,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as WorkflowTriggerType,
-      condition: freezed == condition
-          ? _value.condition
-          : condition // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  $Res call({Object? type = null, Object? condition = freezed}) {
+    return _then(
+      _value.copyWith(
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as WorkflowTriggerType,
+            condition: freezed == condition
+                ? _value.condition
+                : condition // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$WorkflowTriggerImplCopyWith<$Res>
     implements $WorkflowTriggerCopyWith<$Res> {
-  factory _$$WorkflowTriggerImplCopyWith(_$WorkflowTriggerImpl value,
-          $Res Function(_$WorkflowTriggerImpl) then) =
-      __$$WorkflowTriggerImplCopyWithImpl<$Res>;
+  factory _$$WorkflowTriggerImplCopyWith(
+    _$WorkflowTriggerImpl value,
+    $Res Function(_$WorkflowTriggerImpl) then,
+  ) = __$$WorkflowTriggerImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({WorkflowTriggerType type, String? condition});
@@ -418,25 +431,25 @@ class __$$WorkflowTriggerImplCopyWithImpl<$Res>
     extends _$WorkflowTriggerCopyWithImpl<$Res, _$WorkflowTriggerImpl>
     implements _$$WorkflowTriggerImplCopyWith<$Res> {
   __$$WorkflowTriggerImplCopyWithImpl(
-      _$WorkflowTriggerImpl _value, $Res Function(_$WorkflowTriggerImpl) _then)
-      : super(_value, _then);
+    _$WorkflowTriggerImpl _value,
+    $Res Function(_$WorkflowTriggerImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? type = null,
-    Object? condition = freezed,
-  }) {
-    return _then(_$WorkflowTriggerImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as WorkflowTriggerType,
-      condition: freezed == condition
-          ? _value.condition
-          : condition // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? type = null, Object? condition = freezed}) {
+    return _then(
+      _$WorkflowTriggerImpl(
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as WorkflowTriggerType,
+        condition: freezed == condition
+            ? _value.condition
+            : condition // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -480,30 +493,29 @@ class _$WorkflowTriggerImpl implements _WorkflowTrigger {
   @pragma('vm:prefer-inline')
   _$$WorkflowTriggerImplCopyWith<_$WorkflowTriggerImpl> get copyWith =>
       __$$WorkflowTriggerImplCopyWithImpl<_$WorkflowTriggerImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WorkflowTriggerImplToJson(
-      this,
-    );
+    return _$$WorkflowTriggerImplToJson(this);
   }
 }
 
 abstract class _WorkflowTrigger implements WorkflowTrigger {
-  const factory _WorkflowTrigger(
-      {required final WorkflowTriggerType type,
-      final String? condition}) = _$WorkflowTriggerImpl;
+  const factory _WorkflowTrigger({
+    required final WorkflowTriggerType type,
+    final String? condition,
+  }) = _$WorkflowTriggerImpl;
 
   factory _WorkflowTrigger.fromJson(Map<String, dynamic> json) =
       _$WorkflowTriggerImpl.fromJson;
 
   @override
-
   /// 触发类型
   WorkflowTriggerType get type;
   @override
-
   /// 触发条件表达式
   String? get condition;
   @override
@@ -551,18 +563,20 @@ mixin _$AIWorkflow {
 /// @nodoc
 abstract class $AIWorkflowCopyWith<$Res> {
   factory $AIWorkflowCopyWith(
-          AIWorkflow value, $Res Function(AIWorkflow) then) =
-      _$AIWorkflowCopyWithImpl<$Res, AIWorkflow>;
+    AIWorkflow value,
+    $Res Function(AIWorkflow) then,
+  ) = _$AIWorkflowCopyWithImpl<$Res, AIWorkflow>;
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String description,
-      WorkflowTrigger trigger,
-      List<AIStep> steps,
-      bool enabled,
-      int createdAt,
-      int updatedAt});
+  $Res call({
+    String id,
+    String name,
+    String description,
+    WorkflowTrigger trigger,
+    List<AIStep> steps,
+    bool enabled,
+    int createdAt,
+    int updatedAt,
+  });
 
   $WorkflowTriggerCopyWith<$Res> get trigger;
 }
@@ -589,40 +603,43 @@ class _$AIWorkflowCopyWithImpl<$Res, $Val extends AIWorkflow>
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      trigger: null == trigger
-          ? _value.trigger
-          : trigger // ignore: cast_nullable_to_non_nullable
-              as WorkflowTrigger,
-      steps: null == steps
-          ? _value.steps
-          : steps // ignore: cast_nullable_to_non_nullable
-              as List<AIStep>,
-      enabled: null == enabled
-          ? _value.enabled
-          : enabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            description: null == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String,
+            trigger: null == trigger
+                ? _value.trigger
+                : trigger // ignore: cast_nullable_to_non_nullable
+                      as WorkflowTrigger,
+            steps: null == steps
+                ? _value.steps
+                : steps // ignore: cast_nullable_to_non_nullable
+                      as List<AIStep>,
+            enabled: null == enabled
+                ? _value.enabled
+                : enabled // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+            updatedAt: null == updatedAt
+                ? _value.updatedAt
+                : updatedAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 
   @override
@@ -638,19 +655,21 @@ class _$AIWorkflowCopyWithImpl<$Res, $Val extends AIWorkflow>
 abstract class _$$AIWorkflowImplCopyWith<$Res>
     implements $AIWorkflowCopyWith<$Res> {
   factory _$$AIWorkflowImplCopyWith(
-          _$AIWorkflowImpl value, $Res Function(_$AIWorkflowImpl) then) =
-      __$$AIWorkflowImplCopyWithImpl<$Res>;
+    _$AIWorkflowImpl value,
+    $Res Function(_$AIWorkflowImpl) then,
+  ) = __$$AIWorkflowImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String description,
-      WorkflowTrigger trigger,
-      List<AIStep> steps,
-      bool enabled,
-      int createdAt,
-      int updatedAt});
+  $Res call({
+    String id,
+    String name,
+    String description,
+    WorkflowTrigger trigger,
+    List<AIStep> steps,
+    bool enabled,
+    int createdAt,
+    int updatedAt,
+  });
 
   @override
   $WorkflowTriggerCopyWith<$Res> get trigger;
@@ -661,8 +680,9 @@ class __$$AIWorkflowImplCopyWithImpl<$Res>
     extends _$AIWorkflowCopyWithImpl<$Res, _$AIWorkflowImpl>
     implements _$$AIWorkflowImplCopyWith<$Res> {
   __$$AIWorkflowImplCopyWithImpl(
-      _$AIWorkflowImpl _value, $Res Function(_$AIWorkflowImpl) _then)
-      : super(_value, _then);
+    _$AIWorkflowImpl _value,
+    $Res Function(_$AIWorkflowImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -676,56 +696,58 @@ class __$$AIWorkflowImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$AIWorkflowImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      trigger: null == trigger
-          ? _value.trigger
-          : trigger // ignore: cast_nullable_to_non_nullable
-              as WorkflowTrigger,
-      steps: null == steps
-          ? _value._steps
-          : steps // ignore: cast_nullable_to_non_nullable
-              as List<AIStep>,
-      enabled: null == enabled
-          ? _value.enabled
-          : enabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$AIWorkflowImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+        trigger: null == trigger
+            ? _value.trigger
+            : trigger // ignore: cast_nullable_to_non_nullable
+                  as WorkflowTrigger,
+        steps: null == steps
+            ? _value._steps
+            : steps // ignore: cast_nullable_to_non_nullable
+                  as List<AIStep>,
+        enabled: null == enabled
+            ? _value.enabled
+            : enabled // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+        updatedAt: null == updatedAt
+            ? _value.updatedAt
+            : updatedAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$AIWorkflowImpl implements _AIWorkflow {
-  const _$AIWorkflowImpl(
-      {required this.id,
-      required this.name,
-      this.description = '',
-      required this.trigger,
-      final List<AIStep> steps = const [],
-      this.enabled = true,
-      required this.createdAt,
-      required this.updatedAt})
-      : _steps = steps;
+  const _$AIWorkflowImpl({
+    required this.id,
+    required this.name,
+    this.description = '',
+    required this.trigger,
+    final List<AIStep> steps = const [],
+    this.enabled = true,
+    required this.createdAt,
+    required this.updatedAt,
+  }) : _steps = steps;
 
   factory _$AIWorkflowImpl.fromJson(Map<String, dynamic> json) =>
       _$$AIWorkflowImplFromJson(json);
@@ -798,15 +820,16 @@ class _$AIWorkflowImpl implements _AIWorkflow {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      description,
-      trigger,
-      const DeepCollectionEquality().hash(_steps),
-      enabled,
-      createdAt,
-      updatedAt);
+    runtimeType,
+    id,
+    name,
+    description,
+    trigger,
+    const DeepCollectionEquality().hash(_steps),
+    enabled,
+    createdAt,
+    updatedAt,
+  );
 
   @JsonKey(ignore: true)
   @override
@@ -816,56 +839,47 @@ class _$AIWorkflowImpl implements _AIWorkflow {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AIWorkflowImplToJson(
-      this,
-    );
+    return _$$AIWorkflowImplToJson(this);
   }
 }
 
 abstract class _AIWorkflow implements AIWorkflow {
-  const factory _AIWorkflow(
-      {required final String id,
-      required final String name,
-      final String description,
-      required final WorkflowTrigger trigger,
-      final List<AIStep> steps,
-      final bool enabled,
-      required final int createdAt,
-      required final int updatedAt}) = _$AIWorkflowImpl;
+  const factory _AIWorkflow({
+    required final String id,
+    required final String name,
+    final String description,
+    required final WorkflowTrigger trigger,
+    final List<AIStep> steps,
+    final bool enabled,
+    required final int createdAt,
+    required final int updatedAt,
+  }) = _$AIWorkflowImpl;
 
   factory _AIWorkflow.fromJson(Map<String, dynamic> json) =
       _$AIWorkflowImpl.fromJson;
 
   @override
-
   /// UUID v4
   String get id;
   @override
-
   /// 工作流名称
   String get name;
   @override
-
   /// 工作流描述
   String get description;
   @override
-
   /// 触发条件
   WorkflowTrigger get trigger;
   @override
-
   /// 工作流步骤列表
   List<AIStep> get steps;
   @override
-
   /// 是否启用
   bool get enabled;
   @override
-
   /// 创建时间
   int get createdAt;
   @override
-
   /// 更新时间
   int get updatedAt;
   @override

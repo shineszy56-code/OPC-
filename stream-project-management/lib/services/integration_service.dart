@@ -90,17 +90,19 @@ class IntegrationService {
 
       // 模拟：记录到操作日志
       final deviceId = await _keyManager.getDeviceId();
-      await _logRepo.create(OperationLog(
-        id: const Uuid().v4(),
-        projectId: projectId,
-        memberId: deviceId,
-        memberName: 'GitHub Sync',
-        action: LogAction.create,
-        field: 'integration',
-        newValue: '同步了 GitHub 提交记录',
-        timestamp: DateTime.now().millisecondsSinceEpoch,
-        synced: false,
-      ));
+      await _logRepo.create(
+        OperationLog(
+          id: const Uuid().v4(),
+          projectId: projectId,
+          memberId: deviceId,
+          memberName: 'GitHub Sync',
+          action: LogAction.create,
+          field: 'integration',
+          newValue: '同步了 GitHub 提交记录',
+          timestamp: DateTime.now().millisecondsSinceEpoch,
+          synced: false,
+        ),
+      );
 
       return 3; // 模拟返回 3 条新提交
     } catch (e) {
@@ -117,17 +119,19 @@ class IntegrationService {
       await Future.delayed(const Duration(seconds: 1));
 
       final deviceId = await _keyManager.getDeviceId();
-      await _logRepo.create(OperationLog(
-        id: const Uuid().v4(),
-        projectId: projectId,
-        memberId: deviceId,
-        memberName: 'Cursor Sync',
-        action: LogAction.update,
-        field: 'integration',
-        newValue: '同步了 Cursor 使用记录',
-        timestamp: DateTime.now().millisecondsSinceEpoch,
-        synced: false,
-      ));
+      await _logRepo.create(
+        OperationLog(
+          id: const Uuid().v4(),
+          projectId: projectId,
+          memberId: deviceId,
+          memberName: 'Cursor Sync',
+          action: LogAction.update,
+          field: 'integration',
+          newValue: '同步了 Cursor 使用记录',
+          timestamp: DateTime.now().millisecondsSinceEpoch,
+          synced: false,
+        ),
+      );
 
       return 5; // 模拟返回 5 条记录
     } catch (e) {
@@ -144,17 +148,19 @@ class IntegrationService {
       await Future.delayed(const Duration(seconds: 1));
 
       final deviceId = await _keyManager.getDeviceId();
-      await _logRepo.create(OperationLog(
-        id: const Uuid().v4(),
-        projectId: projectId,
-        memberId: deviceId,
-        memberName: 'Claude Sync',
-        action: LogAction.update,
-        field: 'integration',
-        newValue: '同步了 Claude 使用记录',
-        timestamp: DateTime.now().millisecondsSinceEpoch,
-        synced: false,
-      ));
+      await _logRepo.create(
+        OperationLog(
+          id: const Uuid().v4(),
+          projectId: projectId,
+          memberId: deviceId,
+          memberName: 'Claude Sync',
+          action: LogAction.update,
+          field: 'integration',
+          newValue: '同步了 Claude 使用记录',
+          timestamp: DateTime.now().millisecondsSinceEpoch,
+          synced: false,
+        ),
+      );
 
       return 2; // 模拟返回 2 条记录
     } catch (e) {

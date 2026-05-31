@@ -18,8 +18,10 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('设置',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        title: const Text(
+          '设置',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -27,7 +29,10 @@ class SettingsScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(16),
         children: [
           // 主题设置
-          const Text('外观', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+          const Text(
+            '外观',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          ),
           const SizedBox(height: 8),
           Card(
             shape: RoundedRectangleBorder(
@@ -38,7 +43,9 @@ class SettingsScreen extends ConsumerWidget {
                 SwitchListTile(
                   value: appState.themeMode == ThemeMode.dark,
                   onChanged: (value) {
-                    ref.read(appStateNotifierProvider.notifier).toggleThemeMode();
+                    ref
+                        .read(appStateNotifierProvider.notifier)
+                        .toggleThemeMode();
                   },
                   title: const Text('深色模式'),
                   secondary: Icon(
@@ -55,7 +62,9 @@ class SettingsScreen extends ConsumerWidget {
                   trailing: Text(
                     appState.languageCode == 'zh' ? '简体中文' : 'English',
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withOpacity(0.6),
                     ),
                   ),
                   onTap: () => _showLanguageDialog(context, ref),
@@ -65,7 +74,10 @@ class SettingsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 24),
           // 安全设置
-          const Text('安全', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+          const Text(
+            '安全',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          ),
           const SizedBox(height: 8),
           Card(
             shape: RoundedRectangleBorder(
@@ -80,11 +92,16 @@ class SettingsScreen extends ConsumerWidget {
                       // 启用生物识别
                       // TODO: 调用 local_auth 验证
                     }
-                    ref.read(appStateNotifierProvider.notifier).toggleBiometric();
+                    ref
+                        .read(appStateNotifierProvider.notifier)
+                        .toggleBiometric();
                   },
                   title: const Text('生物识别解锁'),
                   subtitle: const Text('使用指纹或面部识别'),
-                  secondary: const Icon(Icons.fingerprint, color: Color(0xFF6C63FF)),
+                  secondary: const Icon(
+                    Icons.fingerprint,
+                    color: Color(0xFF6C63FF),
+                  ),
                 ),
                 const Divider(height: 1),
                 ListTile(
@@ -101,7 +118,10 @@ class SettingsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 24),
           // 关于
-          const Text('关于', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+          const Text(
+            '关于',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          ),
           const SizedBox(height: 8),
           Card(
             shape: RoundedRectangleBorder(
@@ -116,7 +136,10 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 const Divider(height: 1),
                 ListTile(
-                  leading: const Icon(Icons.description, color: Color(0xFF6C63FF)),
+                  leading: const Icon(
+                    Icons.description,
+                    color: Color(0xFF6C63FF),
+                  ),
                   title: const Text('隐私政策'),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () {
@@ -209,7 +232,9 @@ class SettingsScreen extends ConsumerWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('确认清除'),
-        content: const Text('确定要清除所有数据吗？此操作不可撤销。\n\n连续 5 次密码错误将自动清除数据（设计文档 8.3）。'),
+        content: const Text(
+          '确定要清除所有数据吗？此操作不可撤销。\n\n连续 5 次密码错误将自动清除数据（设计文档 8.3）。',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
@@ -219,9 +244,9 @@ class SettingsScreen extends ConsumerWidget {
             onPressed: () {
               // TODO: 清除所有数据
               Navigator.of(context).pop();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('所有数据已清除')),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(const SnackBar(content: Text('所有数据已清除')));
             },
             child: const Text('清除', style: TextStyle(color: Colors.red)),
           ),

@@ -42,7 +42,8 @@ class ProjectRepository {
     if (statusFilter != null) {
       final clause = where != null ? '$where AND status = ?' : 'status = ?';
       where = clause;
-      whereArgs = whereArgs ?? []..add(statusFilter);
+      whereArgs = whereArgs ?? []
+        ..add(statusFilter);
     }
 
     final results = await db.query(
@@ -74,12 +75,7 @@ class ProjectRepository {
     final db = await _dbService.database;
     final data = _projectToMap(project);
     data['updated_at'] = DateTime.now().millisecondsSinceEpoch;
-    await db.update(
-      'projects',
-      data,
-      where: 'id = ?',
-      whereArgs: [project.id],
-    );
+    await db.update('projects', data, where: 'id = ?', whereArgs: [project.id]);
   }
 
   /// 删除项目（软删除：归档）
@@ -87,7 +83,10 @@ class ProjectRepository {
     final db = await _dbService.database;
     await db.update(
       'projects',
-      {'status': 'archived', 'updated_at': DateTime.now().millisecondsSinceEpoch},
+      {
+        'status': 'archived',
+        'updated_at': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -96,11 +95,7 @@ class ProjectRepository {
   /// 硬删除项目
   Future<void> delete(String id) async {
     final db = await _dbService.database;
-    await db.delete(
-      'projects',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    await db.delete('projects', where: 'id = ?', whereArgs: [id]);
   }
 
   /// 更新项目进度
@@ -108,7 +103,10 @@ class ProjectRepository {
     final db = await _dbService.database;
     await db.update(
       'projects',
-      {'progress': progress, 'updated_at': DateTime.now().millisecondsSinceEpoch},
+      {
+        'progress': progress,
+        'updated_at': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [projectId],
     );

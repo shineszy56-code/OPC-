@@ -27,29 +27,32 @@ Map<String, dynamic> _$$AttachmentImplToJson(_$AttachmentImpl instance) =>
     };
 
 _$TaskImpl _$$TaskImplFromJson(Map<String, dynamic> json) => _$TaskImpl(
-      id: json['id'] as String,
-      projectId: json['projectId'] as String,
-      parentId: json['parentId'] as String?,
-      title: json['title'] as String,
-      description: json['description'] as String? ?? '',
-      status: $enumDecodeNullable(_$TaskStatusEnumMap, json['status']) ??
-          TaskStatus.todo,
-      priority: $enumDecodeNullable(_$TaskPriorityEnumMap, json['priority']) ??
-          TaskPriority.medium,
-      dueDate: (json['dueDate'] as num?)?.toInt(),
-      assigneeId: json['assigneeId'] as String?,
-      aiExecutable: json['aiExecutable'] as bool? ?? false,
-      aiStatus: $enumDecodeNullable(_$AIStatusEnumMap, json['aiStatus']) ??
-          AIStatus.idle,
-      aiResult: json['aiResult'] as String?,
-      attachments: (json['attachments'] as List<dynamic>?)
-              ?.map((e) => Attachment.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
-      createdAt: (json['createdAt'] as num).toInt(),
-      updatedAt: (json['updatedAt'] as num).toInt(),
-      lastModifiedBy: json['lastModifiedBy'] as String? ?? '',
-    );
+  id: json['id'] as String,
+  projectId: json['projectId'] as String,
+  parentId: json['parentId'] as String?,
+  title: json['title'] as String,
+  description: json['description'] as String? ?? '',
+  status:
+      $enumDecodeNullable(_$TaskStatusEnumMap, json['status']) ??
+      TaskStatus.todo,
+  priority:
+      $enumDecodeNullable(_$TaskPriorityEnumMap, json['priority']) ??
+      TaskPriority.medium,
+  dueDate: (json['dueDate'] as num?)?.toInt(),
+  assigneeId: json['assigneeId'] as String?,
+  aiExecutable: json['aiExecutable'] as bool? ?? false,
+  aiStatus:
+      $enumDecodeNullable(_$AIStatusEnumMap, json['aiStatus']) ?? AIStatus.idle,
+  aiResult: json['aiResult'] as String?,
+  attachments:
+      (json['attachments'] as List<dynamic>?)
+          ?.map((e) => Attachment.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [],
+  createdAt: (json['createdAt'] as num).toInt(),
+  updatedAt: (json['updatedAt'] as num).toInt(),
+  lastModifiedBy: json['lastModifiedBy'] as String? ?? '',
+);
 
 Map<String, dynamic> _$$TaskImplToJson(_$TaskImpl instance) =>
     <String, dynamic>{

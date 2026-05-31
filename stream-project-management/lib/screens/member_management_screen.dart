@@ -22,7 +22,10 @@ class MemberManagementScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('成员管理', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        title: const Text(
+          '成员管理',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -56,16 +59,15 @@ class MemberManagementScreen extends ConsumerWidget {
         children: [
           const Text('👥', style: TextStyle(fontSize: 64)),
           const SizedBox(height: 16),
-          Text(
-            '还没有成员',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          Text('还没有成员', style: Theme.of(context).textTheme.headlineSmall),
           const SizedBox(height: 8),
           Text(
             '点击右下角 + 添加协作者',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
-                ),
+              color: Theme.of(
+                context,
+              ).colorScheme.onBackground.withOpacity(0.6),
+            ),
           ),
         ],
       ),
@@ -82,32 +84,32 @@ class MemberManagementScreen extends ConsumerWidget {
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: MemberAvatar(
           name: member.name,
           isOnline: member.isOnline,
           size: 40,
         ),
-        title: Text(member.name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+        title: Text(
+          member.name,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
         subtitle: Text(
           '${_getPermissionText(member.permission)} · ${_formatTime(member.lastActiveAt)}',
-          style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
+          style: TextStyle(
+            fontSize: 12,
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+          ),
         ),
         trailing: PopupMenuButton<MemberPermission>(
           onSelected: (permission) async {
-            await ref.read(memberNotifierProvider.notifier).updatePermission(
-                  member.id,
-                  permission,
-                );
+            await ref
+                .read(memberNotifierProvider.notifier)
+                .updatePermission(member.id, permission);
           },
           itemBuilder: (context) => MemberPermission.values.map((p) {
-            return PopupMenuItem(
-              value: p,
-              child: Text(_getPermissionText(p)),
-            );
+            return PopupMenuItem(value: p, child: Text(_getPermissionText(p)));
           }).toList(),
         ),
       ),
@@ -122,10 +124,7 @@ class MemberManagementScreen extends ConsumerWidget {
         children: [
           const Text('😞', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 16),
-          Text(
-            '加载失败',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          Text('加载失败', style: Theme.of(context).textTheme.headlineSmall),
         ],
       ),
     );
@@ -158,14 +157,18 @@ class MemberManagementScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              const Text('权限级别', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+              const Text(
+                '权限级别',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              ),
               const SizedBox(height: 8),
               ...MemberPermission.values.map((p) {
                 return RadioListTile<MemberPermission>(
                   title: Text(_getPermissionText(p)),
                   value: p,
                   groupValue: selectedPermission,
-                  onChanged: (value) => setState(() => selectedPermission = value!),
+                  onChanged: (value) =>
+                      setState(() => selectedPermission = value!),
                 );
               }),
             ],
@@ -178,7 +181,9 @@ class MemberManagementScreen extends ConsumerWidget {
             FilledButton(
               onPressed: () async {
                 if (nameController.text.isEmpty) return;
-                await ref.read(memberNotifierProvider.notifier).addMember(
+                await ref
+                    .read(memberNotifierProvider.notifier)
+                    .addMember(
                       projectId: projectId,
                       name: nameController.text,
                       permission: selectedPermission,

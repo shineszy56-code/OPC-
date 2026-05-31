@@ -97,7 +97,9 @@ class OfflineQueue {
   }
 
   /// 从 Cloudflare KV 下载变更
-  Future<List<Map<String, dynamic>>> _downloadFromCloudflare(String projectId) async {
+  Future<List<Map<String, dynamic>>> _downloadFromCloudflare(
+    String projectId,
+  ) async {
     // TODO: 实现 Cloudflare Workers API 调用
     // 设计文档 6.2.2: GET /share/{id}
     return [];
@@ -168,14 +170,16 @@ class OfflineQueue {
     final state = pending > 0
         ? OfflineQueueState.pending
         : failed > 0
-            ? OfflineQueueState.failed
-            : OfflineQueueState.synced;
+        ? OfflineQueueState.failed
+        : OfflineQueueState.synced;
 
-    _statusController!.add(OfflineQueueStatus(
-      state: state,
-      pendingCount: pending,
-      failedCount: failed,
-    ));
+    _statusController!.add(
+      OfflineQueueStatus(
+        state: state,
+        pendingCount: pending,
+        failedCount: failed,
+      ),
+    );
   }
 
   /// 销毁资源
@@ -198,21 +202,12 @@ class OfflineQueueStatus {
 }
 
 /// 离线队列状态枚举
-enum OfflineQueueState {
-  synced,
-  pending,
-  inProgress,
-  failed,
-  offline,
-}
+enum OfflineQueueState { synced, pending, inProgress, failed, offline }
 
 /// 队列处理结果
 class QueueProcessResult {
   final int synced;
   final int failed;
 
-  QueueProcessResult({
-    required this.synced,
-    required this.failed,
-  });
+  QueueProcessResult({required this.synced, required this.failed});
 }

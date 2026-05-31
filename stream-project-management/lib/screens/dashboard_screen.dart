@@ -24,10 +24,7 @@ class DashboardScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text(
           'AI OPC',
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -89,15 +86,17 @@ class DashboardScreen extends ConsumerWidget {
           Text(
             '还没有项目',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
             '点击右下角 + 创建你的第一个项目',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
-                ),
+              color: Theme.of(
+                context,
+              ).colorScheme.onBackground.withOpacity(0.6),
+            ),
           ),
         ],
       ),
@@ -114,9 +113,7 @@ class DashboardScreen extends ConsumerWidget {
 
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: InkWell(
         onTap: () {
           ref.read(selectedProjectIdProvider.notifier).state = project.id;
@@ -135,10 +132,7 @@ class DashboardScreen extends ConsumerWidget {
               // 项目图标和名称
               Row(
                 children: [
-                  Text(
-                    project.icon,
-                    style: const TextStyle(fontSize: 28),
-                  ),
+                  Text(project.icon, style: const TextStyle(fontSize: 28)),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
@@ -161,8 +155,7 @@ class DashboardScreen extends ConsumerWidget {
                 child: LinearProgressIndicator(
                   value: progress,
                   minHeight: 8,
-                  backgroundColor:
-                      Theme.of(context).colorScheme.surfaceVariant,
+                  backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
                   valueColor: AlwaysStoppedAnimation<Color>(
                     _getProgressColor(progress),
                   ),
@@ -185,10 +178,9 @@ class DashboardScreen extends ConsumerWidget {
                     '${_formatDate(project.endDate)} 截止',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withOpacity(0.6),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withOpacity(0.6),
                     ),
                   ),
                 ],
@@ -205,8 +197,8 @@ class DashboardScreen extends ConsumerWidget {
     final color = statusText == '进行中'
         ? const Color(0xFF4CAF50)
         : statusText == '已完成'
-            ? const Color(0xFF6C63FF)
-            : const Color(0xFF9E9E9E);
+        ? const Color(0xFF6C63FF)
+        : const Color(0xFF9E9E9E);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -246,10 +238,7 @@ class DashboardScreen extends ConsumerWidget {
         children: [
           const Text('😞', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 16),
-          Text(
-            '加载失败',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          Text('加载失败', style: Theme.of(context).textTheme.headlineSmall),
           const SizedBox(height: 8),
           Text(
             error.toString(),
@@ -266,21 +255,13 @@ class DashboardScreen extends ConsumerWidget {
     return BottomNavigationBar(
       backgroundColor: Theme.of(context).colorScheme.surface,
       selectedItemColor: const Color(0xFF6C63FF),
-      unselectedItemColor:
-          Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+      unselectedItemColor: Theme.of(
+        context,
+      ).colorScheme.onSurface.withOpacity(0.6),
       items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.dashboard),
-          label: '仪表盘',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.smart_toy),
-          label: 'AI 中心',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: '设置',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: '仪表盘'),
+        BottomNavigationBarItem(icon: Icon(Icons.smart_toy), label: 'AI 中心'),
+        BottomNavigationBarItem(icon: Icon(Icons.settings), label: '设置'),
       ],
       onTap: (index) {
         // TODO: 导航到对应页面

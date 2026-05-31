@@ -30,7 +30,9 @@ class BackupService {
   /// 设计文档 11.1：用户可以随时导出所有数据
   Future<String?> exportToJson() async {
     try {
-      final projects = await _projectService.getAllProjects(includeArchived: true);
+      final projects = await _projectService.getAllProjects(
+        includeArchived: true,
+      );
       final data = {
         'version': '1.0.0',
         'exported_at': DateTime.now().toIso8601String(),
@@ -40,7 +42,9 @@ class BackupService {
 
       final jsonStr = json.encode(data);
       final tempDir = await getTemporaryDirectory();
-      final file = File('${tempDir.path}/ai_opc_backup_${DateTime.now().millisecondsSinceEpoch}.json');
+      final file = File(
+        '${tempDir.path}/ai_opc_backup_${DateTime.now().millisecondsSinceEpoch}.json',
+      );
       await file.writeAsString(jsonStr);
 
       return file.path;
@@ -52,7 +56,9 @@ class BackupService {
   /// 导出到用户选择的路径
   Future<String?> exportToPath() async {
     try {
-      final projects = await _projectService.getAllProjects(includeArchived: true);
+      final projects = await _projectService.getAllProjects(
+        includeArchived: true,
+      );
       final data = {
         'version': '1.0.0',
         'exported_at': DateTime.now().toIso8601String(),
@@ -120,7 +126,9 @@ class BackupService {
   Future<bool> encryptedCloudBackup() async {
     try {
       // 1. 收集所有数据
-      final projects = await _projectService.getAllProjects(includeArchived: true);
+      final projects = await _projectService.getAllProjects(
+        includeArchived: true,
+      );
       final data = {
         'version': '1.0.0',
         'projects': projects.map((p) => p.toJson()).toList(),
@@ -187,14 +195,18 @@ class BackupService {
       await backupDir.create(recursive: true);
     }
 
-    final projects = await _projectService.getAllProjects(includeArchived: true);
+    final projects = await _projectService.getAllProjects(
+      includeArchived: true,
+    );
     final data = {
       'version': '1.0.0',
       'projects': projects.map((p) => p.toJson()).toList(),
     };
 
     final jsonStr = json.encode(data);
-    final file = File('${backupDir.path}/backup_${DateTime.now().millisecondsSinceEpoch}.json');
+    final file = File(
+      '${backupDir.path}/backup_${DateTime.now().millisecondsSinceEpoch}.json',
+    );
     await file.writeAsString(jsonStr);
   }
 

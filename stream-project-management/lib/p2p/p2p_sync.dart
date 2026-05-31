@@ -44,26 +44,32 @@ class P2PSync {
     _isSyncing = true;
 
     try {
-      _syncProgressController?.add(const P2PSyncProgress(
-        status: P2PSyncStatus.syncing,
-        progress: 0.0,
-        message: '开始同步',
-      ));
+      _syncProgressController?.add(
+        const P2PSyncProgress(
+          status: P2PSyncStatus.syncing,
+          progress: 0.0,
+          message: '开始同步',
+        ),
+      );
 
       // TODO: 实现完整的 P2P 数据同步
       await Future.delayed(const Duration(milliseconds: 500));
 
-      _syncProgressController?.add(const P2PSyncProgress(
-        status: P2PSyncStatus.completed,
-        progress: 1.0,
-        message: '同步完成',
-      ));
+      _syncProgressController?.add(
+        const P2PSyncProgress(
+          status: P2PSyncStatus.completed,
+          progress: 1.0,
+          message: '同步完成',
+        ),
+      );
     } catch (e) {
-      _syncProgressController?.add(P2PSyncProgress(
-        status: P2PSyncStatus.failed,
-        progress: 0.0,
-        message: '同步失败: $e',
-      ));
+      _syncProgressController?.add(
+        P2PSyncProgress(
+          status: P2PSyncStatus.failed,
+          progress: 0.0,
+          message: '同步失败: $e',
+        ),
+      );
     } finally {
       _isSyncing = false;
     }
@@ -88,10 +94,4 @@ class P2PSyncProgress {
 }
 
 /// P2P 同步状态
-enum P2PSyncStatus {
-  idle,
-  connecting,
-  syncing,
-  completed,
-  failed,
-}
+enum P2PSyncStatus { idle, connecting, syncing, completed, failed }

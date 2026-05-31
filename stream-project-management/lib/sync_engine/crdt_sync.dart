@@ -75,7 +75,10 @@ class CRDTSync {
   /// 获取本地状态更新（用于同步到远程）
   Future<Map<String, dynamic>> getLocalUpdate(String projectId) async {
     // TODO: 使用 y_crdt 的 getUpdate 方法
-    return {'projectId': projectId, 'updated_at': DateTime.now().millisecondsSinceEpoch};
+    return {
+      'projectId': projectId,
+      'updated_at': DateTime.now().millisecondsSinceEpoch,
+    };
   }
 
   /// 计算状态向量（用于增量同步）

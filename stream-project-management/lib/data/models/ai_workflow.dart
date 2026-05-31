@@ -35,17 +35,11 @@ class AIStep with _$AIStep {
     @Default(60) int timeoutSeconds,
   }) = _AIStep;
 
-  factory AIStep.fromJson(Map<String, dynamic> json) =>
-      _$AIStepFromJson(json);
+  factory AIStep.fromJson(Map<String, dynamic> json) => _$AIStepFromJson(json);
 }
 
 /// 步骤类型枚举
-enum StepType {
-  prompt,
-  condition,
-  loop,
-  parallel,
-}
+enum StepType { prompt, condition, loop, parallel }
 
 /// AI 工作流触发条件
 @freezed

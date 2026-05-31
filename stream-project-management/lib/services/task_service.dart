@@ -138,19 +138,21 @@ class TaskService {
 
     // 记录日志
     final deviceId = await _keyManager.getDeviceId();
-    await _logRepo.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: task.projectId,
-      taskId: taskId,
-      memberId: deviceId,
-      memberName: '我',
-      action: LogAction.statusChange,
-      field: 'status',
-      oldValue: oldStatus,
-      newValue: newStatus.name,
-      timestamp: DateTime.now().millisecondsSinceEpoch,
-      synced: false,
-    ));
+    await _logRepo.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: task.projectId,
+        taskId: taskId,
+        memberId: deviceId,
+        memberName: '我',
+        action: LogAction.statusChange,
+        field: 'status',
+        oldValue: oldStatus,
+        newValue: newStatus.name,
+        timestamp: DateTime.now().millisecondsSinceEpoch,
+        synced: false,
+      ),
+    );
 
     await _enqueue('update', task.copyWith(status: newStatus));
 
@@ -206,7 +208,10 @@ class TaskService {
   }
 
   /// 获取即将到期任务
-  Future<List<Task>> getUpcomingTasks(String projectId, {int daysAhead = 7}) async {
+  Future<List<Task>> getUpcomingTasks(
+    String projectId, {
+    int daysAhead = 7,
+  }) async {
     return _taskRepo.getUpcomingTasks(projectId, daysAhead: daysAhead);
   }
 
@@ -224,34 +229,38 @@ class TaskService {
 
   Future<void> _logCreation(Task task) async {
     final deviceId = await _keyManager.getDeviceId();
-    await _logRepo.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: task.projectId,
-      taskId: task.id,
-      memberId: deviceId,
-      memberName: '我',
-      action: LogAction.create,
-      field: 'task',
-      newValue: task.title,
-      timestamp: task.createdAt,
-      synced: false,
-    ));
+    await _logRepo.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: task.projectId,
+        taskId: task.id,
+        memberId: deviceId,
+        memberName: '我',
+        action: LogAction.create,
+        field: 'task',
+        newValue: task.title,
+        timestamp: task.createdAt,
+        synced: false,
+      ),
+    );
   }
 
   Future<void> _logDeletion(Task task) async {
     final deviceId = await _keyManager.getDeviceId();
-    await _logRepo.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: task.projectId,
-      taskId: task.id,
-      memberId: deviceId,
-      memberName: '我',
-      action: LogAction.delete,
-      field: 'task',
-      oldValue: task.title,
-      timestamp: DateTime.now().millisecondsSinceEpoch,
-      synced: false,
-    ));
+    await _logRepo.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: task.projectId,
+        taskId: task.id,
+        memberId: deviceId,
+        memberName: '我',
+        action: LogAction.delete,
+        field: 'task',
+        oldValue: task.title,
+        timestamp: DateTime.now().millisecondsSinceEpoch,
+        synced: false,
+      ),
+    );
   }
 
   Future<void> _enqueue(String operationType, dynamic payload) async {

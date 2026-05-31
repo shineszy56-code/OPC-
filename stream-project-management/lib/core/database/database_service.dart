@@ -60,9 +60,10 @@ class DatabaseService {
 
   /// 升级数据库
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    // 未来数据库迁移逻辑
-    if (oldVersion < newVersion) {
-      // 按版本号执行迁移
+    if (oldVersion < 2) {
+      await db.execute(
+        'ALTER TABLE tasks ADD COLUMN progress REAL NOT NULL DEFAULT 0',
+      );
     }
   }
 
@@ -90,7 +91,10 @@ class DatabaseService {
   }
 
   /// 执行原始 SQL 查询
-  Future<List<Map<String, dynamic>>> rawQuery(String sql, [List<dynamic>? arguments]) async {
+  Future<List<Map<String, dynamic>>> rawQuery(
+    String sql, [
+    List<dynamic>? arguments,
+  ]) async {
     final db = await database;
     return db.rawQuery(sql, arguments);
   }
@@ -143,12 +147,7 @@ class DatabaseService {
     List<dynamic>? whereArgs,
   }) async {
     final db = await database;
-    return db.update(
-      table,
-      values,
-      where: where,
-      whereArgs: whereArgs,
-    );
+    return db.update(table, values, where: where, whereArgs: whereArgs);
   }
 
   /// 删除记录
@@ -158,11 +157,7 @@ class DatabaseService {
     List<dynamic>? whereArgs,
   }) async {
     final db = await database;
-    return db.delete(
-      table,
-      where: where,
-      whereArgs: whereArgs,
-    );
+    return db.delete(table, where: where, whereArgs: whereArgs);
   }
 
   /// 批量执行操作（事务）

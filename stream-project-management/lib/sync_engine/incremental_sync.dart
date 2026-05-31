@@ -46,11 +46,7 @@ class IncrementalSync {
       );
 
       if (diff.isEmpty) {
-        return SyncResult(
-          status: SyncStatus.synced,
-          synced: 0,
-          failed: 0,
-        );
+        return SyncResult(status: SyncStatus.synced, synced: 0, failed: 0);
       }
 
       // 3. 加密差异数据

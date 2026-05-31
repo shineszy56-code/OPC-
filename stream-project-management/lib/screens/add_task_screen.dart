@@ -24,7 +24,10 @@ class AddTaskScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('新建任务', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        title: const Text(
+          '新建任务',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -66,15 +69,36 @@ class AddTaskScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 16),
               // 优先级选择
-              const Text('优先级', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+              const Text(
+                '优先级',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
               const SizedBox(height: 8),
               Row(
                 children: [
-                  _buildPriorityChip(context, '低', TaskPriority.low, selectedPriority, (p) => selectedPriority = p),
+                  _buildPriorityChip(
+                    context,
+                    '低',
+                    TaskPriority.low,
+                    selectedPriority,
+                    (p) => selectedPriority = p,
+                  ),
                   const SizedBox(width: 8),
-                  _buildPriorityChip(context, '中', TaskPriority.medium, selectedPriority, (p) => selectedPriority = p),
+                  _buildPriorityChip(
+                    context,
+                    '中',
+                    TaskPriority.medium,
+                    selectedPriority,
+                    (p) => selectedPriority = p,
+                  ),
                   const SizedBox(width: 8),
-                  _buildPriorityChip(context, '高', TaskPriority.high, selectedPriority, (p) => selectedPriority = p),
+                  _buildPriorityChip(
+                    context,
+                    '高',
+                    TaskPriority.high,
+                    selectedPriority,
+                    (p) => selectedPriority = p,
+                  ),
                 ],
               ),
               const SizedBox(height: 16),
@@ -87,7 +111,9 @@ class AddTaskScreen extends ConsumerWidget {
                         onTap: () async {
                           final date = await showDatePicker(
                             context: context,
-                            initialDate: DateTime.now().add(const Duration(days: 7)),
+                            initialDate: DateTime.now().add(
+                              const Duration(days: 7),
+                            ),
                             firstDate: DateTime.now(),
                             lastDate: DateTime(2030),
                           );
@@ -161,7 +187,14 @@ class AddTaskScreen extends ConsumerWidget {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          child: const Text('创建任务', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white)),
+          child: const Text(
+            '创建任务',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );
@@ -179,8 +212,8 @@ class AddTaskScreen extends ConsumerWidget {
     final color = priority == TaskPriority.high
         ? const Color(0xFFF44336)
         : priority == TaskPriority.medium
-            ? const Color(0xFFFFC107)
-            : const Color(0xFF4CAF50);
+        ? const Color(0xFFFFC107)
+        : const Color(0xFF4CAF50);
 
     return ChoiceChip(
       label: Text(label),
@@ -188,7 +221,9 @@ class AddTaskScreen extends ConsumerWidget {
       onSelected: (_) => onChanged(priority),
       selectedColor: color.withOpacity(0.2),
       labelStyle: TextStyle(
-        color: isSelected ? color : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+        color: isSelected
+            ? color
+            : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
         fontSize: 14,
       ),
       labelPadding: const EdgeInsets.symmetric(horizontal: 8),

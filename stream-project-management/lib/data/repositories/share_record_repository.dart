@@ -67,22 +67,14 @@ class ShareRecordRepository {
   /// 撤销分享（删除记录）
   Future<void> delete(String id) async {
     final db = await _dbService.database;
-    await db.delete(
-      'share_records',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    await db.delete('share_records', where: 'id = ?', whereArgs: [id]);
   }
 
   /// 清理过期分享记录
   Future<void> cleanupExpired() async {
     final db = await _dbService.database;
     final now = DateTime.now().millisecondsSinceEpoch;
-    await db.delete(
-      'share_records',
-      where: 'expires_at < ?',
-      whereArgs: [now],
-    );
+    await db.delete('share_records', where: 'expires_at < ?', whereArgs: [now]);
   }
 
   /// 更新分享权限
@@ -90,7 +82,10 @@ class ShareRecordRepository {
     final db = await _dbService.database;
     await db.update(
       'share_records',
-      {'permission': _permissionToString(permission), 'updated_at': DateTime.now().millisecondsSinceEpoch},
+      {
+        'permission': _permissionToString(permission),
+        'updated_at': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -101,7 +96,10 @@ class ShareRecordRepository {
     final db = await _dbService.database;
     await db.update(
       'share_records',
-      {'expires_at': newExpiry, 'updated_at': DateTime.now().millisecondsSinceEpoch},
+      {
+        'expires_at': newExpiry,
+        'updated_at': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [id],
     );

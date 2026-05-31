@@ -12,7 +12,8 @@ class IntegrationScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final statusAsync = ref.watch(integrationStatusProvider);
-    final status = statusAsync.valueOrNull ??
+    final status =
+        statusAsync.valueOrNull ??
         IntegrationStatus(
           githubConfigured: false,
           cursorConfigured: false,
@@ -22,7 +23,10 @@ class IntegrationScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('第三方集成', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        title: const Text(
+          '第三方集成',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -72,7 +76,14 @@ class IntegrationScreen extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: const Text('同步所有', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white)),
+            child: const Text(
+              '同步所有',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
           ),
         ],
       ),
@@ -90,9 +101,7 @@ class IntegrationScreen extends ConsumerWidget {
     required VoidCallback onTap,
   }) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: Container(
           width: 40,
@@ -103,7 +112,10 @@ class IntegrationScreen extends ConsumerWidget {
           ),
           child: Icon(icon, color: color, size: 20),
         ),
-        title: Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+        title: Text(
+          title,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
         subtitle: Text(
           isConfigured ? '已配置' : description,
           style: TextStyle(
@@ -255,14 +267,20 @@ class IntegrationScreen extends ConsumerWidget {
 
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('同步完成: GitHub ${result.githubCommits} 条, Cursor ${result.cursorUsage} 条, Claude ${result.claudeUsage} 条')),
+        SnackBar(
+          content: Text(
+            '同步完成: GitHub ${result.githubCommits} 条, Cursor ${result.cursorUsage} 条, Claude ${result.claudeUsage} 条',
+          ),
+        ),
       );
     }
   }
 }
 
 /// 集成状态 Provider
-final integrationStatusProvider = FutureProvider<IntegrationStatus>((ref) async {
+final integrationStatusProvider = FutureProvider<IntegrationStatus>((
+  ref,
+) async {
   final service = ref.watch(integrationServiceProvider);
   return service.getStatus();
 });

@@ -6,7 +6,7 @@ class DatabaseSchema {
   DatabaseSchema._();
 
   /// 数据库版本
-  static const int version = 1;
+  static const int version = 2;
 
   /// 项目表
   /// 设计文档：interface Project
@@ -40,6 +40,7 @@ class DatabaseSchema {
       priority TEXT NOT NULL DEFAULT 'medium',
       due_date INTEGER,
       assignee_id TEXT,
+      progress REAL NOT NULL DEFAULT 0,
       ai_executable INTEGER NOT NULL DEFAULT 0,
       ai_status TEXT NOT NULL DEFAULT 'idle',
       ai_result TEXT,
@@ -193,6 +194,7 @@ class DatabaseSchema {
     'priority',
     'due_date',
     'assignee_id',
+    'progress',
     'ai_executable',
     'ai_status',
     'ai_result',

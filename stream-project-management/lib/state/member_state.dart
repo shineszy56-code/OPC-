@@ -5,24 +5,26 @@ import '../data/models/enums.dart';
 import '../data/models/project_member.dart';
 import '../services/member_service.dart';
 
-
 /// 项目成员列表
 final projectMembersProvider =
     FutureProvider.family<List<ProjectMember>, String>((ref, projectId) async {
-  final service = MemberService();
-  return service.getProjectMembers(projectId);
-});
+      final service = MemberService();
+      return service.getProjectMembers(projectId);
+    });
 
 /// 在线成员数量
-final onlineMemberCountProvider =
-    FutureProvider.family<int, String>((ref, projectId) async {
+final onlineMemberCountProvider = FutureProvider.family<int, String>((
+  ref,
+  projectId,
+) async {
   final service = MemberService();
   return service.getOnlineCount(projectId);
 });
 
 /// 成员操作 Notifier
-final memberNotifierProvider =
-    NotifierProvider<MemberNotifier, void>(MemberNotifier.new);
+final memberNotifierProvider = NotifierProvider<MemberNotifier, void>(
+  MemberNotifier.new,
+);
 
 class MemberNotifier extends Notifier<void> {
   @override

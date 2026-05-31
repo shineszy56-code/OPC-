@@ -56,17 +56,19 @@ class ProjectService {
     await _repository.create(project);
 
     // 记录操作日志
-    await _logRepository.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: project.id,
-      memberId: deviceId,
-      memberName: '我', // TODO: 从设置获取用户昵称
-      action: LogAction.create,
-      field: 'project',
-      newValue: name,
-      timestamp: now,
-      synced: false,
-    ));
+    await _logRepository.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: project.id,
+        memberId: deviceId,
+        memberName: '我', // TODO: 从设置获取用户昵称
+        action: LogAction.create,
+        field: 'project',
+        newValue: name,
+        timestamp: now,
+        synced: false,
+      ),
+    );
 
     // 加入离线队列
     await _queueRepository.enqueue(
@@ -98,17 +100,19 @@ class ProjectService {
 
     // 记录操作日志
     final deviceId = await _keyManager.getDeviceId();
-    await _logRepository.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: project.id,
-      memberId: deviceId,
-      memberName: '我',
-      action: LogAction.update,
-      field: changedField,
-      newValue: changedField == 'name' ? project.name : null,
-      timestamp: DateTime.now().millisecondsSinceEpoch,
-      synced: false,
-    ));
+    await _logRepository.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: project.id,
+        memberId: deviceId,
+        memberName: '我',
+        action: LogAction.update,
+        field: changedField,
+        newValue: changedField == 'name' ? project.name : null,
+        timestamp: DateTime.now().millisecondsSinceEpoch,
+        synced: false,
+      ),
+    );
   }
 
   /// 归档项目
@@ -116,18 +120,20 @@ class ProjectService {
     await _repository.archive(id);
 
     final deviceId = await _keyManager.getDeviceId();
-    await _logRepository.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: id,
-      memberId: deviceId,
-      memberName: '我',
-      action: LogAction.statusChange,
-      field: 'status',
-      oldValue: 'active',
-      newValue: 'archived',
-      timestamp: DateTime.now().millisecondsSinceEpoch,
-      synced: false,
-    ));
+    await _logRepository.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: id,
+        memberId: deviceId,
+        memberName: '我',
+        action: LogAction.statusChange,
+        field: 'status',
+        oldValue: 'active',
+        newValue: 'archived',
+        timestamp: DateTime.now().millisecondsSinceEpoch,
+        synced: false,
+      ),
+    );
   }
 
   /// 删除项目（硬删除）
@@ -160,13 +166,15 @@ class ProjectService {
   Future<Map<String, dynamic>> getProjectStats(String projectId) async {
     final tasks = await _repository.getAll(); // TODO: 需要 TaskRepository
     final project = await _repository.getById(projectId);
-    
+
     return {
       'totalTasks': 0, // TODO: 从 TaskRepository 获取
       'completedTasks': 0,
       'progress': project?.progress ?? 0,
       'daysRemaining': project != null
-          ? ((project.endDate - DateTime.now().millisecondsSinceEpoch) / (24 * 60 * 60 * 1000)).ceil()
+          ? ((project.endDate - DateTime.now().millisecondsSinceEpoch) /
+                    (24 * 60 * 60 * 1000))
+                .ceil()
           : 0,
     };
   }

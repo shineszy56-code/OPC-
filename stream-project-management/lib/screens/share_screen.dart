@@ -27,8 +27,10 @@ class ShareScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('分享管理',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        title: const Text(
+          '分享管理',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -43,7 +45,9 @@ class ShareScreen extends ConsumerWidget {
 
   /// 显示创建分享对话框
   Future<void> _showCreateShareDialog(
-      BuildContext context, WidgetRef ref) async {
+    BuildContext context,
+    WidgetRef ref,
+  ) async {
     Duration? selectedDuration;
 
     await showDialog(
@@ -100,11 +104,7 @@ class ShareScreen extends ConsumerWidget {
               onPressed: selectedDuration != null
                   ? () async {
                       Navigator.of(context).pop();
-                      await _createShareLink(
-                        context,
-                        ref,
-                        selectedDuration!,
-                      );
+                      await _createShareLink(context, ref, selectedDuration!);
                     }
                   : null,
               style: FilledButton.styleFrom(
@@ -228,9 +228,9 @@ class ShareScreen extends ConsumerWidget {
                   // 复制到剪贴板
                   // TODO: 实现复制功能
                   Navigator.of(context).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('链接已复制')),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(const SnackBar(content: Text('链接已复制')));
                 },
                 style: FilledButton.styleFrom(
                   backgroundColor: const Color(0xFF6C63FF),
@@ -243,9 +243,9 @@ class ShareScreen extends ConsumerWidget {
       }
     } catch (e) {
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('创建分享链接失败：$e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('创建分享链接失败：$e')));
       }
     }
   }
@@ -289,19 +289,13 @@ class _ShareBody extends ConsumerWidget {
         children: [
           const Text('🔗', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 16),
-          Text(
-            '暂无分享链接',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          Text('暂无分享链接', style: Theme.of(context).textTheme.headlineSmall),
           const SizedBox(height: 8),
           Text(
             '点击 + 创建分享链接',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.6),
-                ),
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            ),
           ),
         ],
       ),
@@ -316,10 +310,7 @@ class _ShareBody extends ConsumerWidget {
         children: [
           const Text('😞', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 16),
-          Text(
-            '加载失败',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          Text('加载失败', style: Theme.of(context).textTheme.headlineSmall),
           const SizedBox(height: 8),
           Text(
             error.toString(),
@@ -342,9 +333,7 @@ class _ShareBody extends ConsumerWidget {
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -449,21 +438,19 @@ class _ShareBody extends ConsumerWidget {
                 await shareService.revokeShare(shareId);
                 ref.invalidate(projectSharesProvider(projectId));
                 if (context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('分享链接已撤销')),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(const SnackBar(content: Text('分享链接已撤销')));
                 }
               } catch (e) {
                 if (context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('撤销失败：$e')),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text('撤销失败：$e')));
                 }
               }
             },
-            style: FilledButton.styleFrom(
-              backgroundColor: Colors.red,
-            ),
+            style: FilledButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('撤销'),
           ),
         ],
@@ -473,12 +460,15 @@ class _ShareBody extends ConsumerWidget {
 }
 
 /// 选中的权限 Provider
-final _selectedPermissionProvider =
-    StateProvider<MemberPermission>((ref) => MemberPermission.read);
+final _selectedPermissionProvider = StateProvider<MemberPermission>(
+  (ref) => MemberPermission.read,
+);
 
 /// 项目分享列表 Provider
-final projectSharesProvider =
-    FutureProvider.family<List<ShareRecord>, String>((ref, projectId) async {
+final projectSharesProvider = FutureProvider.family<List<ShareRecord>, String>((
+  ref,
+  projectId,
+) async {
   final shareService = ref.watch(shareServiceProvider);
   return shareService.getProjectShares(projectId);
 });

@@ -51,8 +51,7 @@ class WebRTCManager {
 
   /// 消息流
   Stream<Map<String, dynamic>> get onMessage {
-    _messageController =
-        StreamController<Map<String, dynamic>>.broadcast();
+    _messageController = StreamController<Map<String, dynamic>>.broadcast();
     return _messageController!.stream;
   }
 

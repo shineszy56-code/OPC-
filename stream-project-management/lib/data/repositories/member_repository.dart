@@ -55,7 +55,10 @@ class ProjectMemberRepository {
     final db = await _dbService.database;
     await db.update(
       'project_members',
-      {'permission': _permissionToString(permission), 'updated_at': DateTime.now().millisecondsSinceEpoch},
+      {
+        'permission': _permissionToString(permission),
+        'updated_at': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -66,7 +69,10 @@ class ProjectMemberRepository {
     final db = await _dbService.database;
     await db.update(
       'project_members',
-      {'is_online': isOnline ? 1 : 0, 'last_active_at': DateTime.now().millisecondsSinceEpoch},
+      {
+        'is_online': isOnline ? 1 : 0,
+        'last_active_at': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -75,11 +81,7 @@ class ProjectMemberRepository {
   /// 移除成员
   Future<void> delete(String id) async {
     final db = await _dbService.database;
-    await db.delete(
-      'project_members',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    await db.delete('project_members', where: 'id = ?', whereArgs: [id]);
   }
 
   /// 获取在线成员数量

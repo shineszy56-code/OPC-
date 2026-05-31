@@ -8,11 +8,7 @@ class SyncStatusBadge extends StatelessWidget {
   final SyncStatus status;
   final int? pendingCount;
 
-  const SyncStatusBadge({
-    super.key,
-    required this.status,
-    this.pendingCount,
-  });
+  const SyncStatusBadge({super.key, required this.status, this.pendingCount});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +17,7 @@ class SyncStatusBadge extends StatelessWidget {
       decoration: BoxDecoration(
         color: _getStatusColor().withOpacity(0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: _getStatusColor().withOpacity(0.3),
-        ),
+        border: Border.all(color: _getStatusColor().withOpacity(0.3)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -49,10 +43,7 @@ class SyncStatusBadge extends StatelessWidget {
             const SizedBox(width: 2),
             Text(
               '($pendingCount)',
-              style: TextStyle(
-                fontSize: 9,
-                color: _getStatusColor(),
-              ),
+              style: TextStyle(fontSize: 9, color: _getStatusColor()),
             ),
           ],
         ],

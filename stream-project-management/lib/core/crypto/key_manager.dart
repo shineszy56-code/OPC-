@@ -17,12 +17,8 @@ class KeyManager {
   factory KeyManager() => _instance;
 
   static const _storage = FlutterSecureStorage(
-    aOptions: AndroidOptions(
-      encryptedSharedPreferences: true,
-    ),
-    iOptions: IOSOptions(
-      accountName: 'com.aiopc.stream',
-    ),
+    aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    iOptions: IOSOptions(accountName: 'com.aiopc.stream'),
   );
 
   static const _mainKeyTag = 'ai_opc_main_key';
@@ -38,10 +34,7 @@ class KeyManager {
 
     // 生成新密钥
     final newKey = EncryptionService().generateShareKey();
-    await _storage.write(
-      key: _mainKeyTag,
-      value: base64.encode(newKey),
-    );
+    await _storage.write(key: _mainKeyTag, value: base64.encode(newKey));
     return newKey;
   }
 
@@ -67,10 +60,7 @@ class KeyManager {
     }
 
     final newKey = EncryptionService().generateShareKey();
-    await _storage.write(
-      key: tag,
-      value: base64.encode(newKey),
-    );
+    await _storage.write(key: tag, value: base64.encode(newKey));
     return newKey;
   }
 
@@ -107,10 +97,7 @@ class KeyManager {
 
   /// 设置生物识别保护
   Future<void> setBiometricEnabled(bool enabled) async {
-    await _storage.write(
-      key: 'biometric_enabled',
-      value: enabled.toString(),
-    );
+    await _storage.write(key: 'biometric_enabled', value: enabled.toString());
   }
 
   /// 读取任意 key（用于读取 API Key 等）

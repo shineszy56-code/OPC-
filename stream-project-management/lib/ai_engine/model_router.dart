@@ -63,12 +63,7 @@ class ModelRouter {
 
   /// 检查模型是否本地模型
   bool isLocalModel(String model) {
-    final localModels = [
-      'qwen2:7b',
-      'llama3:8b',
-      'qwen2:4b',
-      'llama3:3b',
-    ];
+    final localModels = ['qwen2:7b', 'llama3:8b', 'qwen2:4b', 'llama3:3b'];
     return localModels.any((m) => model.startsWith(m));
   }
 
@@ -95,41 +90,21 @@ class ModelRouter {
 
   /// 检测是否是任务拆解请求
   bool _isTaskBreakdown(String prompt) {
-    final keywords = [
-      '拆解',
-      'breakdown',
-      '子任务',
-      'subtask',
-      '步骤',
-      'step',
-    ];
+    final keywords = ['拆解', 'breakdown', '子任务', 'subtask', '步骤', 'step'];
     final lowerPrompt = prompt.toLowerCase();
     return keywords.any((kw) => lowerPrompt.contains(kw));
   }
 
   /// 检测是否是排期请求
   bool _isScheduling(String prompt) {
-    final keywords = [
-      '排期',
-      'schedule',
-      '计划',
-      'plan',
-      '时间线',
-      'timeline',
-    ];
+    final keywords = ['排期', 'schedule', '计划', 'plan', '时间线', 'timeline'];
     final lowerPrompt = prompt.toLowerCase();
     return keywords.any((kw) => lowerPrompt.contains(kw));
   }
 
   /// 检测是否是总结请求
   bool _isSummary(String prompt) {
-    final keywords = [
-      '总结',
-      'summary',
-      '报告',
-      'report',
-      '汇总',
-    ];
+    final keywords = ['总结', 'summary', '报告', 'report', '汇总'];
     final lowerPrompt = prompt.toLowerCase();
     return keywords.any((kw) => lowerPrompt.contains(kw));
   }

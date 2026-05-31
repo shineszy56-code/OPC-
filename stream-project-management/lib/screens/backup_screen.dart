@@ -23,8 +23,10 @@ class BackupScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: const Text('备份与恢复',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        title: const Text(
+          '备份与恢复',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -34,7 +36,10 @@ class BackupScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // 本地备份
-            const Text('本地备份', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            const Text(
+              '本地备份',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 12),
             Card(
               shape: RoundedRectangleBorder(
@@ -50,7 +55,10 @@ class BackupScreen extends ConsumerWidget {
                         color: const Color(0xFF6C63FF).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Icon(Icons.download, color: Color(0xFF6C63FF)),
+                      child: const Icon(
+                        Icons.download,
+                        color: Color(0xFF6C63FF),
+                      ),
                     ),
                     title: const Text('导出到文件'),
                     subtitle: const Text('将项目数据导出为 JSON 文件'),
@@ -78,7 +86,10 @@ class BackupScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 24),
             // 加密云备份
-            const Text('加密云备份', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            const Text(
+              '加密云备份',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 12),
             Card(
               shape: RoundedRectangleBorder(
@@ -94,7 +105,10 @@ class BackupScreen extends ConsumerWidget {
                         color: const Color(0xFFFF5722).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Icon(Icons.cloud_upload, color: Color(0xFFFF5722)),
+                      child: const Icon(
+                        Icons.cloud_upload,
+                        color: Color(0xFFFF5722),
+                      ),
                     ),
                     title: const Text('备份到云端'),
                     subtitle: const Text('端到端加密后上传到 Cloudflare R2'),
@@ -110,7 +124,10 @@ class BackupScreen extends ConsumerWidget {
                         color: const Color(0xFF9C27B0).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Icon(Icons.cloud_download, color: Color(0xFF9C27B0)),
+                      child: const Icon(
+                        Icons.cloud_download,
+                        color: Color(0xFF9C27B0),
+                      ),
                     ),
                     title: const Text('从云端恢复'),
                     subtitle: const Text('需要密码解密'),
@@ -122,11 +139,12 @@ class BackupScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 24),
             // 本地备份列表
-            const Text('本地备份文件', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-            const SizedBox(height: 8),
-            Expanded(
-              child: _buildLocalBackups(context, ref),
+            const Text(
+              '本地备份文件',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
+            const SizedBox(height: 8),
+            Expanded(child: _buildLocalBackups(context, ref)),
           ],
         ),
       ),
@@ -138,9 +156,9 @@ class BackupScreen extends ConsumerWidget {
     final service = ref.read(backupServiceProvider);
     final path = await service.exportToPath();
     if (path != null && context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('已导出到：$path')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('已导出到：$path')));
     }
   }
 
@@ -149,9 +167,9 @@ class BackupScreen extends ConsumerWidget {
     final service = ref.read(backupServiceProvider);
     final success = await service.restoreFromPath();
     if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(success ? '恢复成功' : '恢复失败')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(success ? '恢复成功' : '恢复失败')));
     }
   }
 
@@ -160,9 +178,9 @@ class BackupScreen extends ConsumerWidget {
     final service = ref.read(backupServiceProvider);
     final success = await service.encryptedCloudBackup();
     if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(success ? '云端备份成功' : '云端备份失败')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(success ? '云端备份成功' : '云端备份失败')));
     }
   }
 
@@ -247,12 +265,16 @@ class BackupScreen extends ConsumerWidget {
   }
 
   /// 删除备份
-  Future<void> _deleteBackup(BuildContext context, WidgetRef ref, String path) async {
+  Future<void> _deleteBackup(
+    BuildContext context,
+    WidgetRef ref,
+    String path,
+  ) async {
     await ref.read(backupServiceProvider).deleteLocalBackup(path);
     if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('已删除')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('已删除')));
     }
   }
 }

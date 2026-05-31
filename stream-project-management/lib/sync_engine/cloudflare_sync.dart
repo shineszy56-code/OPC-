@@ -53,9 +53,7 @@ class CloudflareSync {
     try {
       final response = await _dio.get(
         '$_baseUrl/share/$shareId',
-        options: Options(
-          validateStatus: (status) => status != null,
-        ),
+        options: Options(validateStatus: (status) => status != null),
       );
 
       if (response.statusCode == 200 && response.data != null) {
@@ -89,9 +87,7 @@ class CloudflareSync {
   /// 返回加密的增量数据（需使用项目密钥解密）
   Future<String?> pullIncremental(String projectId) async {
     try {
-      final response = await _dio.get(
-        '$_baseUrl/share/$projectId/sync',
-      );
+      final response = await _dio.get('$_baseUrl/share/$projectId/sync');
 
       if (response.statusCode == 200 && response.data != null) {
         return response.data['diff'] as String?;
@@ -114,10 +110,7 @@ class CloudflareSync {
         'file': MultipartFile.fromBytes(fileBytes, filename: fileName),
       });
 
-      final response = await _dio.post(
-        '$_baseUrl/file',
-        data: formData,
-      );
+      final response = await _dio.post('$_baseUrl/file', data: formData);
 
       if (response.statusCode == 200) {
         return response.data['url'] as String?;
@@ -148,9 +141,7 @@ class CloudflareSync {
   /// 获取操作日志
   Future<List<Map<String, dynamic>>> getOperationLogs(String projectId) async {
     try {
-      final response = await _dio.get(
-        '$_baseUrl/share/$projectId/log',
-      );
+      final response = await _dio.get('$_baseUrl/share/$projectId/log');
 
       if (response.statusCode == 200 && response.data != null) {
         final logs = response.data['logs'] as List<dynamic>;
@@ -167,9 +158,7 @@ class CloudflareSync {
     try {
       final response = await _dio.get(
         '$_baseUrl/health',
-        options: Options(
-          validateStatus: (status) => status != null,
-        ),
+        options: Options(validateStatus: (status) => status != null),
       );
       return response.statusCode == 200;
     } catch (e) {
@@ -213,9 +202,7 @@ class CloudflareSync {
   /// 撤销分享链接
   Future<bool> revokeShareLink(String shareId) async {
     try {
-      final response = await _dio.delete(
-        '$_baseUrl/share/$shareId',
-      );
+      final response = await _dio.delete('$_baseUrl/share/$shareId');
       return response.statusCode == 200;
     } catch (e) {
       return false;
@@ -225,7 +212,10 @@ class CloudflareSync {
   /// 生成分享 ID
   String _generateShareId() {
     return DateTime.now().millisecondsSinceEpoch.toString() +
-        _encryption.generateSalt().map((b) => b.toRadixString(16).padLeft(2, '0')).join();
+        _encryption
+            .generateSalt()
+            .map((b) => b.toRadixString(16).padLeft(2, '0'))
+            .join();
   }
 
   /// 权限枚举转字符串

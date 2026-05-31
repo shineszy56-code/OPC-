@@ -12,7 +12,8 @@ part of 'project_member.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProjectMember _$ProjectMemberFromJson(Map<String, dynamic> json) {
   return _ProjectMember.fromJson(json);
@@ -56,19 +57,21 @@ mixin _$ProjectMember {
 /// @nodoc
 abstract class $ProjectMemberCopyWith<$Res> {
   factory $ProjectMemberCopyWith(
-          ProjectMember value, $Res Function(ProjectMember) then) =
-      _$ProjectMemberCopyWithImpl<$Res, ProjectMember>;
+    ProjectMember value,
+    $Res Function(ProjectMember) then,
+  ) = _$ProjectMemberCopyWithImpl<$Res, ProjectMember>;
   @useResult
-  $Res call(
-      {String id,
-      String projectId,
-      String name,
-      MemberPermission permission,
-      String shareId,
-      int lastActiveAt,
-      bool isOnline,
-      int createdAt,
-      int updatedAt});
+  $Res call({
+    String id,
+    String projectId,
+    String name,
+    MemberPermission permission,
+    String shareId,
+    int lastActiveAt,
+    bool isOnline,
+    int createdAt,
+    int updatedAt,
+  });
 }
 
 /// @nodoc
@@ -94,44 +97,47 @@ class _$ProjectMemberCopyWithImpl<$Res, $Val extends ProjectMember>
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      projectId: null == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      permission: null == permission
-          ? _value.permission
-          : permission // ignore: cast_nullable_to_non_nullable
-              as MemberPermission,
-      shareId: null == shareId
-          ? _value.shareId
-          : shareId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastActiveAt: null == lastActiveAt
-          ? _value.lastActiveAt
-          : lastActiveAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      isOnline: null == isOnline
-          ? _value.isOnline
-          : isOnline // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            projectId: null == projectId
+                ? _value.projectId
+                : projectId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            permission: null == permission
+                ? _value.permission
+                : permission // ignore: cast_nullable_to_non_nullable
+                      as MemberPermission,
+            shareId: null == shareId
+                ? _value.shareId
+                : shareId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            lastActiveAt: null == lastActiveAt
+                ? _value.lastActiveAt
+                : lastActiveAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+            isOnline: null == isOnline
+                ? _value.isOnline
+                : isOnline // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+            updatedAt: null == updatedAt
+                ? _value.updatedAt
+                : updatedAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -139,20 +145,22 @@ class _$ProjectMemberCopyWithImpl<$Res, $Val extends ProjectMember>
 abstract class _$$ProjectMemberImplCopyWith<$Res>
     implements $ProjectMemberCopyWith<$Res> {
   factory _$$ProjectMemberImplCopyWith(
-          _$ProjectMemberImpl value, $Res Function(_$ProjectMemberImpl) then) =
-      __$$ProjectMemberImplCopyWithImpl<$Res>;
+    _$ProjectMemberImpl value,
+    $Res Function(_$ProjectMemberImpl) then,
+  ) = __$$ProjectMemberImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String projectId,
-      String name,
-      MemberPermission permission,
-      String shareId,
-      int lastActiveAt,
-      bool isOnline,
-      int createdAt,
-      int updatedAt});
+  $Res call({
+    String id,
+    String projectId,
+    String name,
+    MemberPermission permission,
+    String shareId,
+    int lastActiveAt,
+    bool isOnline,
+    int createdAt,
+    int updatedAt,
+  });
 }
 
 /// @nodoc
@@ -160,8 +168,9 @@ class __$$ProjectMemberImplCopyWithImpl<$Res>
     extends _$ProjectMemberCopyWithImpl<$Res, _$ProjectMemberImpl>
     implements _$$ProjectMemberImplCopyWith<$Res> {
   __$$ProjectMemberImplCopyWithImpl(
-      _$ProjectMemberImpl _value, $Res Function(_$ProjectMemberImpl) _then)
-      : super(_value, _then);
+    _$ProjectMemberImpl _value,
+    $Res Function(_$ProjectMemberImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -176,60 +185,63 @@ class __$$ProjectMemberImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$ProjectMemberImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      projectId: null == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      permission: null == permission
-          ? _value.permission
-          : permission // ignore: cast_nullable_to_non_nullable
-              as MemberPermission,
-      shareId: null == shareId
-          ? _value.shareId
-          : shareId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastActiveAt: null == lastActiveAt
-          ? _value.lastActiveAt
-          : lastActiveAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      isOnline: null == isOnline
-          ? _value.isOnline
-          : isOnline // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$ProjectMemberImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        projectId: null == projectId
+            ? _value.projectId
+            : projectId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        permission: null == permission
+            ? _value.permission
+            : permission // ignore: cast_nullable_to_non_nullable
+                  as MemberPermission,
+        shareId: null == shareId
+            ? _value.shareId
+            : shareId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        lastActiveAt: null == lastActiveAt
+            ? _value.lastActiveAt
+            : lastActiveAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+        isOnline: null == isOnline
+            ? _value.isOnline
+            : isOnline // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+        updatedAt: null == updatedAt
+            ? _value.updatedAt
+            : updatedAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ProjectMemberImpl implements _ProjectMember {
-  const _$ProjectMemberImpl(
-      {required this.id,
-      required this.projectId,
-      required this.name,
-      this.permission = MemberPermission.read,
-      this.shareId = '',
-      required this.lastActiveAt,
-      this.isOnline = false,
-      required this.createdAt,
-      required this.updatedAt});
+  const _$ProjectMemberImpl({
+    required this.id,
+    required this.projectId,
+    required this.name,
+    this.permission = MemberPermission.read,
+    this.shareId = '',
+    required this.lastActiveAt,
+    this.isOnline = false,
+    required this.createdAt,
+    required this.updatedAt,
+  });
 
   factory _$ProjectMemberImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProjectMemberImplFromJson(json);
@@ -302,8 +314,18 @@ class _$ProjectMemberImpl implements _ProjectMember {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, projectId, name, permission,
-      shareId, lastActiveAt, isOnline, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    projectId,
+    name,
+    permission,
+    shareId,
+    lastActiveAt,
+    isOnline,
+    createdAt,
+    updatedAt,
+  );
 
   @JsonKey(ignore: true)
   @override
@@ -313,61 +335,51 @@ class _$ProjectMemberImpl implements _ProjectMember {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProjectMemberImplToJson(
-      this,
-    );
+    return _$$ProjectMemberImplToJson(this);
   }
 }
 
 abstract class _ProjectMember implements ProjectMember {
-  const factory _ProjectMember(
-      {required final String id,
-      required final String projectId,
-      required final String name,
-      final MemberPermission permission,
-      final String shareId,
-      required final int lastActiveAt,
-      final bool isOnline,
-      required final int createdAt,
-      required final int updatedAt}) = _$ProjectMemberImpl;
+  const factory _ProjectMember({
+    required final String id,
+    required final String projectId,
+    required final String name,
+    final MemberPermission permission,
+    final String shareId,
+    required final int lastActiveAt,
+    final bool isOnline,
+    required final int createdAt,
+    required final int updatedAt,
+  }) = _$ProjectMemberImpl;
 
   factory _ProjectMember.fromJson(Map<String, dynamic> json) =
       _$ProjectMemberImpl.fromJson;
 
   @override
-
   /// UUID v4
   String get id;
   @override
-
   /// 所属项目 ID
   String get projectId;
   @override
-
   /// 成员昵称（本地自定义，不存储在云端）
   String get name;
   @override
-
   /// 权限级别
   MemberPermission get permission;
   @override
-
   /// 关联的分享记录 ID
   String get shareId;
   @override
-
   /// 最后活跃时间
   int get lastActiveAt;
   @override
-
   /// 在线状态（本地计算）
   bool get isOnline;
   @override
-
   /// 创建时间
   int get createdAt;
   @override
-
   /// 更新时间
   int get updatedAt;
   @override

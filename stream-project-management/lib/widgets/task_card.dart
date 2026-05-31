@@ -9,19 +9,13 @@ class TaskCard extends StatelessWidget {
   final Task task;
   final VoidCallback? onTap;
 
-  const TaskCard({
-    super.key,
-    required this.task,
-    this.onTap,
-  });
+  const TaskCard({super.key, required this.task, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -59,7 +53,9 @@ class TaskCard extends StatelessWidget {
                         // 优先级标签
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 6, vertical: 2),
+                            horizontal: 6,
+                            vertical: 2,
+                          ),
                           decoration: BoxDecoration(
                             color: task.priorityColor.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(4),
@@ -79,20 +75,18 @@ class TaskCard extends StatelessWidget {
                           Icon(
                             Icons.calendar_today,
                             size: 14,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurface
-                                .withOpacity(0.4),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withOpacity(0.4),
                           ),
                           const SizedBox(width: 4),
                           Text(
                             _formatDate(task.dueDate!),
                             style: TextStyle(
                               fontSize: 12,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurface
-                                  .withOpacity(0.6),
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.onSurface.withOpacity(0.6),
                             ),
                           ),
                         ],

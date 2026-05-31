@@ -39,14 +39,23 @@ class ProjectScreen extends ConsumerWidget {
               Expanded(
                 child: Text(
                   project?.name ?? '项目详情',
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],
           ),
-          loading: () => const Text('加载中...', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-          error: (_, __) => const Text('项目详情', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+          loading: () => const Text(
+            '加载中...',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+          ),
+          error: (_, __) => const Text(
+            '项目详情',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -55,7 +64,9 @@ class ProjectScreen extends ConsumerWidget {
             icon: const Icon(Icons.share),
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => ShareScreen(projectId: projectId)),
+                MaterialPageRoute(
+                  builder: (_) => ShareScreen(projectId: projectId),
+                ),
               );
             },
           ),
@@ -112,17 +123,22 @@ class ProjectScreen extends ConsumerWidget {
                             return TaskCard(
                               task: task,
                               onTap: () {
-                                ref.read(selectedTaskIdProvider.notifier).state = task.id;
+                                ref
+                                        .read(selectedTaskIdProvider.notifier)
+                                        .state =
+                                    task.id;
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (_) => TaskDetailScreen(taskId: task.id),
+                                    builder: (_) =>
+                                        TaskDetailScreen(taskId: task.id),
                                   ),
                                 );
                               },
                             );
                           },
                         ),
-                  loading: () => const Center(child: CircularProgressIndicator()),
+                  loading: () =>
+                      const Center(child: CircularProgressIndicator()),
                   error: (_, __) => const Text('加载任务失败'),
                 ),
               ],
@@ -133,7 +149,9 @@ class ProjectScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => AddTaskScreen(projectId: projectId)),
+            MaterialPageRoute(
+              builder: (_) => AddTaskScreen(projectId: projectId),
+            ),
           );
         },
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -194,10 +212,7 @@ class ProjectScreen extends ConsumerWidget {
           const SizedBox(height: 16),
           Text('暂无任务', style: Theme.of(context).textTheme.bodyMedium),
           const SizedBox(height: 8),
-          Text(
-            '点击 + 添加任务开始管理',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
+          Text('点击 + 添加任务开始管理', style: Theme.of(context).textTheme.bodySmall),
         ],
       ),
     );

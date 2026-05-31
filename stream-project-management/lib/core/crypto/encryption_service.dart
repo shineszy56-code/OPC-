@@ -105,7 +105,10 @@ class EncryptionService {
       ),
     );
 
-    final encrypted = encrypter.encrypt(plaintext, iv: encrypt.IV(Uint8List.fromList(iv)));
+    final encrypted = encrypter.encrypt(
+      plaintext,
+      iv: encrypt.IV(Uint8List.fromList(iv)),
+    );
 
     final result = Uint8List(iv.length + encrypted.bytes.length);
     result.setRange(0, iv.length, iv);

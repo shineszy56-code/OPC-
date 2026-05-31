@@ -35,7 +35,8 @@ class AIService {
     required String taskTitle,
     String? taskDescription,
   }) async {
-    final prompt = '''
+    final prompt =
+        '''
 你是一个项目管理助手。请将以下任务拆解为 3-8 个子任务。
 
 任务标题：$taskTitle
@@ -86,7 +87,8 @@ ${taskDescription != null ? "任务描述：$taskDescription" : ""}
     final doneTasks = tasks.where((t) => t.isDone).length;
     final totalTasks = tasks.length;
 
-    final prompt = '''
+    final prompt =
+        '''
 请为以下项目生成一份简洁的进度总结报告：
 
 项目名称：${project.name}
@@ -111,7 +113,8 @@ ${taskDescription != null ? "任务描述：$taskDescription" : ""}
 
   /// 生成任务描述（AI 辅助填写）
   Future<String> generateTaskDescription(String taskTitle) async {
-    final prompt = '''
+    final prompt =
+        '''
 请为以下任务生成一段简洁的描述（100字以内）：
 
 任务标题：$taskTitle
@@ -127,7 +130,10 @@ ${taskDescription != null ? "任务描述：$taskDescription" : ""}
   }
 
   /// 执行 AI 工作流
-  Future<void> executeWorkflow(String workflowId, Map<String, dynamic> context) async {
+  Future<void> executeWorkflow(
+    String workflowId,
+    Map<String, dynamic> context,
+  ) async {
     final workflow = await _workflowRepo.getById(workflowId);
     if (workflow == null || !workflow.enabled) return;
 
@@ -138,7 +144,8 @@ ${taskDescription != null ? "任务描述：$taskDescription" : ""}
 
   /// 获取 AI 建议的截止日期
   Future<DateTime?> suggestDueDate(String taskTitle) async {
-    final prompt = '''
+    final prompt =
+        '''
 请为以下任务建议一个合理的截止日期（天数，从今天开始计算）：
 
 任务标题：$taskTitle

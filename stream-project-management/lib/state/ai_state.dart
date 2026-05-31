@@ -9,43 +9,52 @@ import '../services/ai_service.dart';
 import '../services/task_service.dart';
 import 'project_state.dart';
 
-
 /// AI 任务拆解结果
 final aiBreakdownResultProvider =
     FutureProvider.family<List<TaskDraft>, String>((ref, taskTitle) async {
-  final service = ref.watch(aiServiceProvider);
-  final taskService = ref.watch(taskServiceProvider);
-  final projectId = ref.watch(selectedProjectIdProvider);
+      final service = ref.watch(aiServiceProvider);
+      final taskService = ref.watch(taskServiceProvider);
+      final projectId = ref.watch(selectedProjectIdProvider);
 
-  if (projectId == null) return [];
+      if (projectId == null) return [];
 
-  final task = await taskService.getTaskById(ref.watch(selectedTaskIdProvider) ?? '');
-  if (task == null) return [];
+      final task = await taskService.getTaskById(
+        ref.watch(selectedTaskIdProvider) ?? '',
+      );
+      if (task == null) return [];
 
-  return service.breakdownTask(
-    projectId: projectId,
-    taskTitle: taskTitle,
-    taskDescription: task.description.isNotEmpty == true ? task.description : null,
-  );
-});
+      return service.breakdownTask(
+        projectId: projectId,
+        taskTitle: taskTitle,
+        taskDescription: task.description.isNotEmpty == true
+            ? task.description
+            : null,
+      );
+    });
 
 /// AI 项目总结
-final aiProjectSummaryProvider =
-    FutureProvider.family<String, String>((ref, projectId) async {
+final aiProjectSummaryProvider = FutureProvider.family<String, String>((
+  ref,
+  projectId,
+) async {
   final service = ref.watch(aiServiceProvider);
   return service.generateProjectSummary(projectId);
 });
 
 /// AI 任务描述生成
-final aiTaskDescriptionProvider =
-    FutureProvider.family<String, String>((ref, taskTitle) async {
+final aiTaskDescriptionProvider = FutureProvider.family<String, String>((
+  ref,
+  taskTitle,
+) async {
   final service = ref.watch(aiServiceProvider);
   return service.generateTaskDescription(taskTitle);
 });
 
 /// AI 建议的截止日期
-final aiSuggestedDueDateProvider =
-    FutureProvider.family<DateTime?, String>((ref, taskTitle) async {
+final aiSuggestedDueDateProvider = FutureProvider.family<DateTime?, String>((
+  ref,
+  taskTitle,
+) async {
   final service = ref.watch(aiServiceProvider);
   return service.suggestDueDate(taskTitle);
 });
@@ -80,16 +89,20 @@ final aiWorkflowsProvider = FutureProvider<List<AIWorkflow>>((ref) async {
 
 /// AI 工作流执行
 final aiWorkflowExecutionProvider =
-    FutureProvider.family<AIWorkflowExecutionResult, String>((ref, workflowId) async {
-  final service = ref.watch(aiServiceProvider);
-  final context = <String, dynamic>{};
-  // TODO: 实现 executeWorkflow 方法
-  throw UnimplementedError('executeWorkflow not implemented');
-});
+    FutureProvider.family<AIWorkflowExecutionResult, String>((
+      ref,
+      workflowId,
+    ) async {
+      final service = ref.watch(aiServiceProvider);
+      final context = <String, dynamic>{};
+      // TODO: 实现 executeWorkflow 方法
+      throw UnimplementedError('executeWorkflow not implemented');
+    });
 
 /// AI 状态 Notifier
-final aiStateNotifierProvider =
-    NotifierProvider<AISateNotifier, AIState>(AISateNotifier.new);
+final aiStateNotifierProvider = NotifierProvider<AISateNotifier, AIState>(
+  AISateNotifier.new,
+);
 
 class AISateNotifier extends Notifier<AIState> {
   @override
@@ -189,12 +202,7 @@ class AIState {
 }
 
 /// AI 执行状态枚举
-enum AIExecutionStatus {
-  idle,
-  running,
-  completed,
-  failed,
-}
+enum AIExecutionStatus { idle, running, completed, failed }
 
 /// AI 工作流执行结果
 class AIWorkflowExecutionResult {

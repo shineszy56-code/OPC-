@@ -18,23 +18,15 @@ class AddProjectScreen extends ConsumerWidget {
     var selectedIcon = '📁';
     var selectedDate = DateTime.now();
 
-    final icons = [
-      '📁',
-      '📊',
-      '🚀',
-      '🎯',
-      '💡',
-      '🔧',
-      '📱',
-      '💻',
-      '🎨',
-      '📝'
-    ];
+    final icons = ['📁', '📊', '🚀', '🎯', '💡', '🔧', '📱', '💻', '🎨', '📝'];
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('新建项目', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        title: const Text(
+          '新建项目',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -44,7 +36,10 @@ class AddProjectScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // 图标选择
-            const Text('选择图标', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            const Text(
+              '选择图标',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 8),
             Wrap(
               spacing: 12,
@@ -66,10 +61,14 @@ class AddProjectScreen extends ConsumerWidget {
                       border: Border.all(
                         color: isSelected
                             ? const Color(0xFF6C63FF)
-                            : Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                            : Theme.of(
+                                context,
+                              ).colorScheme.outline.withOpacity(0.3),
                       ),
                     ),
-                    child: Center(child: Text(icon, style: const TextStyle(fontSize: 24))),
+                    child: Center(
+                      child: Text(icon, style: const TextStyle(fontSize: 24)),
+                    ),
                   ),
                 );
               }).toList(),
@@ -123,7 +122,9 @@ class AddProjectScreen extends ConsumerWidget {
                       );
                       if (date != null) {
                         selectedDate = date;
-                        startDateController.text = DateFormat('yyyy-MM-dd').format(date);
+                        startDateController.text = DateFormat(
+                          'yyyy-MM-dd',
+                        ).format(date);
                       }
                     },
                     decoration: InputDecoration(
@@ -151,7 +152,9 @@ class AddProjectScreen extends ConsumerWidget {
                         lastDate: DateTime(2030),
                       );
                       if (date != null) {
-                        endDateController.text = DateFormat('yyyy-MM-dd').format(date);
+                        endDateController.text = DateFormat(
+                          'yyyy-MM-dd',
+                        ).format(date);
                       }
                     },
                     decoration: InputDecoration(
@@ -183,7 +186,9 @@ class AddProjectScreen extends ConsumerWidget {
                 ? DateFormat('yyyy-MM-dd').parse(endDateController.text)
                 : DateTime.now().add(const Duration(days: 30));
 
-            await ref.read(projectNotifierProvider.notifier).createProject(
+            await ref
+                .read(projectNotifierProvider.notifier)
+                .createProject(
                   name: nameController.text,
                   icon: selectedIcon,
                   description: descController.text,
@@ -202,7 +207,14 @@ class AddProjectScreen extends ConsumerWidget {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          child: const Text('创建项目', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white)),
+          child: const Text(
+            '创建项目',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );

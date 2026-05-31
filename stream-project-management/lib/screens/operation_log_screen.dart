@@ -23,7 +23,10 @@ class OperationLogScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('操作日志', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        title: const Text(
+          '操作日志',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -46,7 +49,8 @@ class OperationLogScreen extends ConsumerWidget {
       itemCount: logs.length,
       itemBuilder: (context, index) {
         final log = logs[index];
-        final showDateHeader = index == 0 ||
+        final showDateHeader =
+            index == 0 ||
             !_isSameDay(
               DateTime.fromMillisecondsSinceEpoch(log.timestamp),
               DateTime.fromMillisecondsSinceEpoch(logs[index - 1].timestamp),
@@ -155,7 +159,9 @@ class OperationLogScreen extends ConsumerWidget {
                     '${log.field}: ${log.newValue ?? '无'}',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onBackground.withOpacity(0.6),
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -166,7 +172,9 @@ class OperationLogScreen extends ConsumerWidget {
                   _formatTime(log.timestamp),
                   style: TextStyle(
                     fontSize: 12,
-                    color: Theme.of(context).colorScheme.onBackground.withOpacity(0.4),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onBackground.withOpacity(0.4),
                   ),
                 ),
               ],
@@ -185,16 +193,15 @@ class OperationLogScreen extends ConsumerWidget {
         children: [
           const Text('📝', style: TextStyle(fontSize: 64)),
           const SizedBox(height: 16),
-          Text(
-            '暂无操作日志',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          Text('暂无操作日志', style: Theme.of(context).textTheme.headlineSmall),
           const SizedBox(height: 8),
           Text(
             '项目操作记录将显示在这里',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
-                ),
+              color: Theme.of(
+                context,
+              ).colorScheme.onBackground.withOpacity(0.6),
+            ),
           ),
         ],
       ),
@@ -209,10 +216,7 @@ class OperationLogScreen extends ConsumerWidget {
         children: [
           const Text('😞', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 16),
-          Text(
-            '加载失败',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          Text('加载失败', style: Theme.of(context).textTheme.headlineSmall),
         ],
       ),
     );
@@ -247,7 +251,10 @@ class OperationLogScreen extends ConsumerWidget {
 }
 
 /// 项目操作日志 Provider
-final projectLogsProvider = FutureProvider.family<List<OperationLog>, String>((ref, projectId) async {
+final projectLogsProvider = FutureProvider.family<List<OperationLog>, String>((
+  ref,
+  projectId,
+) async {
   final service = OperationLogService();
   return service.getTimeline(projectId);
 });

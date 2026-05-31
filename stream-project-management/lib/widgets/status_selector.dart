@@ -69,16 +69,14 @@ class _StatusButton extends StatelessWidget {
           color: isSelected ? color.withOpacity(0.1) : Colors.transparent,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isSelected ? color : Theme.of(context).colorScheme.outline.withOpacity(0.3),
+            color: isSelected
+                ? color
+                : Theme.of(context).colorScheme.outline.withOpacity(0.3),
           ),
         ),
         child: Column(
           children: [
-            Icon(
-              _getStatusIcon(status),
-              color: color,
-              size: 24,
-            ),
+            Icon(_getStatusIcon(status), color: color, size: 24),
             const SizedBox(height: 4),
             Text(
               _getStatusText(status),

@@ -44,7 +44,10 @@ class TaskRepository {
   }
 
   /// 获取项目下的所有任务（不含子任务）
-  Future<List<Task>> getByProjectId(String projectId, {bool includeSubtasks = false}) async {
+  Future<List<Task>> getByProjectId(
+    String projectId, {
+    bool includeSubtasks = false,
+  }) async {
     final db = await _dbService.database;
     String? where;
     List<dynamic> whereArgs = [projectId];
@@ -97,12 +100,7 @@ class TaskRepository {
     final db = await _dbService.database;
     final data = _taskToMap(task);
     data['updated_at'] = DateTime.now().millisecondsSinceEpoch;
-    await db.update(
-      'tasks',
-      data,
-      where: 'id = ?',
-      whereArgs: [task.id],
-    );
+    await db.update('tasks', data, where: 'id = ?', whereArgs: [task.id]);
   }
 
   /// 删除任务（递归删除子任务）
@@ -131,7 +129,10 @@ class TaskRepository {
     final db = await _dbService.database;
     await db.update(
       'tasks',
-      {'progress': progress, 'updated_at': DateTime.now().millisecondsSinceEpoch},
+      {
+        'progress': progress,
+        'updated_at': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -142,17 +143,25 @@ class TaskRepository {
     final db = await _dbService.database;
     await db.update(
       'tasks',
-      {'assignee_id': assigneeId, 'updated_at': DateTime.now().millisecondsSinceEpoch},
+      {
+        'assignee_id': assigneeId,
+        'updated_at': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [taskId],
     );
   }
 
   /// 获取即将到期的任务
-  Future<List<Task>> getUpcomingTasks(String projectId, {int daysAhead = 7}) async {
+  Future<List<Task>> getUpcomingTasks(
+    String projectId, {
+    int daysAhead = 7,
+  }) async {
     final db = await _dbService.database;
     final now = DateTime.now().millisecondsSinceEpoch;
-    final future = DateTime.now().add(Duration(days: daysAhead)).millisecondsSinceEpoch;
+    final future = DateTime.now()
+        .add(Duration(days: daysAhead))
+        .millisecondsSinceEpoch;
 
     final results = await db.query(
       'tasks',
@@ -209,7 +218,9 @@ class TaskRepository {
       'ai_executable': task.aiExecutable ? 1 : 0,
       'ai_status': _aiStatusToString(task.aiStatus),
       'ai_result': task.aiResult,
-      'attachments': json.encode(task.attachments.map((a) => a.toJson()).toList()),
+      'attachments': json.encode(
+        task.attachments.map((a) => a.toJson()).toList(),
+      ),
       'created_at': task.createdAt,
       'updated_at': task.updatedAt,
       'last_modified_by': task.lastModifiedBy,
@@ -218,10 +229,15 @@ class TaskRepository {
 
   Task _taskFromMap(Map<String, dynamic> map) {
     List<Attachment> attachments = [];
-    if (map['attachments'] != null && map['attachments'].toString().isNotEmpty) {
+    if (map['attachments'] != null &&
+        map['attachments'].toString().isNotEmpty) {
       try {
-        final List<dynamic> jsonList = json.decode(map['attachments'] as String);
-        attachments = jsonList.map((json) => Attachment.fromJson(json as Map<String, dynamic>)).toList();
+        final List<dynamic> jsonList = json.decode(
+          map['attachments'] as String,
+        );
+        attachments = jsonList
+            .map((json) => Attachment.fromJson(json as Map<String, dynamic>))
+            .toList();
       } catch (_) {
         // 忽略解析错误
       }

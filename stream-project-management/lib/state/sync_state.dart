@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../services/sync_service.dart';
 import 'project_state.dart';
 
-
 /// 同步状态
 final syncStatusProvider = FutureProvider<SyncStatus>((ref) async {
   final service = SyncService();
@@ -16,30 +15,25 @@ final syncStatusProvider = FutureProvider<SyncStatus>((ref) async {
 /// 待同步项数量
 final pendingSyncCountProvider = FutureProvider<int>((ref) async {
   final service = SyncService();
-  return service.getPendingChangeCount(ref.watch(selectedProjectIdProvider) ?? '');
+  return service.getPendingChangeCount(
+    ref.watch(selectedProjectIdProvider) ?? '',
+  );
 });
 
 /// 同步操作 Notifier
-final syncNotifierProvider =
-    NotifierProvider<SyncNotifier, SyncResult>(SyncNotifier.new);
+final syncNotifierProvider = NotifierProvider<SyncNotifier, SyncResult>(
+  SyncNotifier.new,
+);
 
 class SyncNotifier extends Notifier<SyncResult> {
   @override
   SyncResult build() {
-    return SyncResult(
-      status: SyncStatus.synced,
-      synced: 0,
-      failed: 0,
-    );
+    return SyncResult(status: SyncStatus.synced, synced: 0, failed: 0);
   }
 
   /// 执行同步
   Future<void> syncAll(String projectId) async {
-    state = SyncResult(
-      status: SyncStatus.inProgress,
-      synced: 0,
-      failed: 0,
-    );
+    state = SyncResult(status: SyncStatus.inProgress, synced: 0, failed: 0);
 
     try {
       final service = SyncService();
@@ -57,11 +51,7 @@ class SyncNotifier extends Notifier<SyncResult> {
 
   /// 处理离线队列
   Future<void> processOfflineQueue(String projectId) async {
-    state = SyncResult(
-      status: SyncStatus.inProgress,
-      synced: 0,
-      failed: 0,
-    );
+    state = SyncResult(status: SyncStatus.inProgress, synced: 0, failed: 0);
 
     try {
       final service = SyncService();

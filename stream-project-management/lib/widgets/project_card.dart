@@ -10,11 +10,7 @@ class ProjectCard extends ConsumerWidget {
   final Project project;
   final VoidCallback? onTap;
 
-  const ProjectCard({
-    super.key,
-    required this.project,
-    this.onTap,
-  });
+  const ProjectCard({super.key, required this.project, this.onTap});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,9 +18,7 @@ class ProjectCard extends ConsumerWidget {
 
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
@@ -36,10 +30,7 @@ class ProjectCard extends ConsumerWidget {
               // 项目图标和名称
               Row(
                 children: [
-                  Text(
-                    project.icon,
-                    style: const TextStyle(fontSize: 28),
-                  ),
+                  Text(project.icon, style: const TextStyle(fontSize: 28)),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
@@ -62,8 +53,7 @@ class ProjectCard extends ConsumerWidget {
                 child: LinearProgressIndicator(
                   value: progress,
                   minHeight: 8,
-                  backgroundColor:
-                      Theme.of(context).colorScheme.surfaceVariant,
+                  backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
                   valueColor: AlwaysStoppedAnimation<Color>(
                     _getProgressColor(progress),
                   ),
@@ -86,10 +76,9 @@ class ProjectCard extends ConsumerWidget {
                     _formatDate(project.endDate),
                     style: TextStyle(
                       fontSize: 14,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withOpacity(0.6),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withOpacity(0.6),
                     ),
                   ),
                 ],
@@ -106,8 +95,8 @@ class ProjectCard extends ConsumerWidget {
     final color = project.isActive
         ? const Color(0xFF4CAF50)
         : project.isCompleted
-            ? const Color(0xFF6C63FF)
-            : const Color(0xFF9E9E9E);
+        ? const Color(0xFF6C63FF)
+        : const Color(0xFF9E9E9E);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),

@@ -82,7 +82,9 @@ class OperationLogRepository {
   /// 删除过期日志（保留最近 7 天）
   Future<void> deleteOldLogs(String projectId) async {
     final db = await _dbService.database;
-    final sevenDaysAgo = DateTime.now().subtract(const Duration(days: 7)).millisecondsSinceEpoch;
+    final sevenDaysAgo = DateTime.now()
+        .subtract(const Duration(days: 7))
+        .millisecondsSinceEpoch;
 
     await db.delete(
       'operation_logs',

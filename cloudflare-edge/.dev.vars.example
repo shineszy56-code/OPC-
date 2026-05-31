@@ -1,0 +1,5 @@
+# Local Wrangler variables for development.
+# Copy to `.dev.vars` if future Worker code needs plain environment variables.
+# KV and R2 bindings are configured in wrangler.toml, not here.
+
+# API_BASE_URL=http://localhost:8787

@@ -70,7 +70,9 @@ class _PriorityButton extends StatelessWidget {
           color: isSelected ? color.withOpacity(0.1) : Colors.transparent,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isSelected ? color : Theme.of(context).colorScheme.outline.withOpacity(0.3),
+            color: isSelected
+                ? color
+                : Theme.of(context).colorScheme.outline.withOpacity(0.3),
           ),
         ),
         child: Center(
@@ -79,7 +81,9 @@ class _PriorityButton extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-              color: isSelected ? color : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+              color: isSelected
+                  ? color
+                  : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
             ),
           ),
         ),

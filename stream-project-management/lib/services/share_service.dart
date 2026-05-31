@@ -57,17 +57,19 @@ class ShareService {
     await _shareRepo.create(record);
 
     // 记录日志
-    await _logRepo.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: projectId,
-      memberId: await _keyManager.getDeviceId(),
-      memberName: '我',
-      action: LogAction.create,
-      field: 'share',
-      newValue: permission.name,
-      timestamp: now,
-      synced: false,
-    ));
+    await _logRepo.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: projectId,
+        memberId: await _keyManager.getDeviceId(),
+        memberName: '我',
+        action: LogAction.create,
+        field: 'share',
+        newValue: permission.name,
+        timestamp: now,
+        synced: false,
+      ),
+    );
 
     await _queueRepo.enqueue(
       operationType: 'create',
@@ -92,17 +94,19 @@ class ShareService {
 
     await _shareRepo.delete(shareId);
 
-    await _logRepo.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: record.projectId ?? '',
-      memberId: await _keyManager.getDeviceId(),
-      memberName: '我',
-      action: LogAction.delete,
-      field: 'share',
-      oldValue: shareId,
-      timestamp: DateTime.now().millisecondsSinceEpoch,
-      synced: false,
-    ));
+    await _logRepo.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: record.projectId ?? '',
+        memberId: await _keyManager.getDeviceId(),
+        memberName: '我',
+        action: LogAction.delete,
+        field: 'share',
+        oldValue: shareId,
+        timestamp: DateTime.now().millisecondsSinceEpoch,
+        synced: false,
+      ),
+    );
   }
 
   /// 更新分享权限

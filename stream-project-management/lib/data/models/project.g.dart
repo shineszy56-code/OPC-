@@ -12,7 +12,8 @@ _$ProjectImpl _$$ProjectImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       icon: json['icon'] as String? ?? '📁',
       description: json['description'] as String? ?? '',
-      status: $enumDecodeNullable(_$ProjectStatusEnumMap, json['status']) ??
+      status:
+          $enumDecodeNullable(_$ProjectStatusEnumMap, json['status']) ??
           ProjectStatus.active,
       startDate: (json['startDate'] as num).toInt(),
       endDate: (json['endDate'] as num).toInt(),

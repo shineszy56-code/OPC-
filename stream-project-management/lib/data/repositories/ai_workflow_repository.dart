@@ -73,7 +73,10 @@ class AIWorkflowRepository {
     final db = await _dbService.database;
     await db.update(
       'ai_workflows',
-      {'enabled': enabled ? 1 : 0, 'updated_at': DateTime.now().millisecondsSinceEpoch},
+      {
+        'enabled': enabled ? 1 : 0,
+        'updated_at': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -82,11 +85,7 @@ class AIWorkflowRepository {
   /// 删除工作流
   Future<void> delete(String id) async {
     final db = await _dbService.database;
-    await db.delete(
-      'ai_workflows',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    await db.delete('ai_workflows', where: 'id = ?', whereArgs: [id]);
   }
 
   /// 获取触发器匹配的工作流
@@ -122,7 +121,9 @@ class AIWorkflowRepository {
     if (map['steps'] != null && map['steps'].toString().isNotEmpty) {
       try {
         final List<dynamic> jsonList = json.decode(map['steps'] as String);
-        steps = jsonList.map((json) => AIStep.fromJson(json as Map<String, dynamic>)).toList();
+        steps = jsonList
+            .map((json) => AIStep.fromJson(json as Map<String, dynamic>))
+            .toList();
       } catch (_) {
         // 忽略解析错误
       }

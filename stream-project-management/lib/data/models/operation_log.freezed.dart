@@ -12,7 +12,8 @@ part of 'operation_log.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 OperationLog _$OperationLogFromJson(Map<String, dynamic> json) {
   return _OperationLog.fromJson(json);
@@ -62,21 +63,23 @@ mixin _$OperationLog {
 /// @nodoc
 abstract class $OperationLogCopyWith<$Res> {
   factory $OperationLogCopyWith(
-          OperationLog value, $Res Function(OperationLog) then) =
-      _$OperationLogCopyWithImpl<$Res, OperationLog>;
+    OperationLog value,
+    $Res Function(OperationLog) then,
+  ) = _$OperationLogCopyWithImpl<$Res, OperationLog>;
   @useResult
-  $Res call(
-      {String id,
-      String projectId,
-      String? taskId,
-      String memberId,
-      String memberName,
-      LogAction action,
-      String? field,
-      String? oldValue,
-      String? newValue,
-      int timestamp,
-      bool synced});
+  $Res call({
+    String id,
+    String projectId,
+    String? taskId,
+    String memberId,
+    String memberName,
+    LogAction action,
+    String? field,
+    String? oldValue,
+    String? newValue,
+    int timestamp,
+    bool synced,
+  });
 }
 
 /// @nodoc
@@ -104,52 +107,55 @@ class _$OperationLogCopyWithImpl<$Res, $Val extends OperationLog>
     Object? timestamp = null,
     Object? synced = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      projectId: null == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String,
-      taskId: freezed == taskId
-          ? _value.taskId
-          : taskId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      memberId: null == memberId
-          ? _value.memberId
-          : memberId // ignore: cast_nullable_to_non_nullable
-              as String,
-      memberName: null == memberName
-          ? _value.memberName
-          : memberName // ignore: cast_nullable_to_non_nullable
-              as String,
-      action: null == action
-          ? _value.action
-          : action // ignore: cast_nullable_to_non_nullable
-              as LogAction,
-      field: freezed == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String?,
-      oldValue: freezed == oldValue
-          ? _value.oldValue
-          : oldValue // ignore: cast_nullable_to_non_nullable
-              as String?,
-      newValue: freezed == newValue
-          ? _value.newValue
-          : newValue // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as int,
-      synced: null == synced
-          ? _value.synced
-          : synced // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            projectId: null == projectId
+                ? _value.projectId
+                : projectId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            taskId: freezed == taskId
+                ? _value.taskId
+                : taskId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            memberId: null == memberId
+                ? _value.memberId
+                : memberId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            memberName: null == memberName
+                ? _value.memberName
+                : memberName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            action: null == action
+                ? _value.action
+                : action // ignore: cast_nullable_to_non_nullable
+                      as LogAction,
+            field: freezed == field
+                ? _value.field
+                : field // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            oldValue: freezed == oldValue
+                ? _value.oldValue
+                : oldValue // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            newValue: freezed == newValue
+                ? _value.newValue
+                : newValue // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            timestamp: null == timestamp
+                ? _value.timestamp
+                : timestamp // ignore: cast_nullable_to_non_nullable
+                      as int,
+            synced: null == synced
+                ? _value.synced
+                : synced // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -157,22 +163,24 @@ class _$OperationLogCopyWithImpl<$Res, $Val extends OperationLog>
 abstract class _$$OperationLogImplCopyWith<$Res>
     implements $OperationLogCopyWith<$Res> {
   factory _$$OperationLogImplCopyWith(
-          _$OperationLogImpl value, $Res Function(_$OperationLogImpl) then) =
-      __$$OperationLogImplCopyWithImpl<$Res>;
+    _$OperationLogImpl value,
+    $Res Function(_$OperationLogImpl) then,
+  ) = __$$OperationLogImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String projectId,
-      String? taskId,
-      String memberId,
-      String memberName,
-      LogAction action,
-      String? field,
-      String? oldValue,
-      String? newValue,
-      int timestamp,
-      bool synced});
+  $Res call({
+    String id,
+    String projectId,
+    String? taskId,
+    String memberId,
+    String memberName,
+    LogAction action,
+    String? field,
+    String? oldValue,
+    String? newValue,
+    int timestamp,
+    bool synced,
+  });
 }
 
 /// @nodoc
@@ -180,8 +188,9 @@ class __$$OperationLogImplCopyWithImpl<$Res>
     extends _$OperationLogCopyWithImpl<$Res, _$OperationLogImpl>
     implements _$$OperationLogImplCopyWith<$Res> {
   __$$OperationLogImplCopyWithImpl(
-      _$OperationLogImpl _value, $Res Function(_$OperationLogImpl) _then)
-      : super(_value, _then);
+    _$OperationLogImpl _value,
+    $Res Function(_$OperationLogImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -198,70 +207,73 @@ class __$$OperationLogImplCopyWithImpl<$Res>
     Object? timestamp = null,
     Object? synced = null,
   }) {
-    return _then(_$OperationLogImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      projectId: null == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String,
-      taskId: freezed == taskId
-          ? _value.taskId
-          : taskId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      memberId: null == memberId
-          ? _value.memberId
-          : memberId // ignore: cast_nullable_to_non_nullable
-              as String,
-      memberName: null == memberName
-          ? _value.memberName
-          : memberName // ignore: cast_nullable_to_non_nullable
-              as String,
-      action: null == action
-          ? _value.action
-          : action // ignore: cast_nullable_to_non_nullable
-              as LogAction,
-      field: freezed == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String?,
-      oldValue: freezed == oldValue
-          ? _value.oldValue
-          : oldValue // ignore: cast_nullable_to_non_nullable
-              as String?,
-      newValue: freezed == newValue
-          ? _value.newValue
-          : newValue // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as int,
-      synced: null == synced
-          ? _value.synced
-          : synced // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$OperationLogImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        projectId: null == projectId
+            ? _value.projectId
+            : projectId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        taskId: freezed == taskId
+            ? _value.taskId
+            : taskId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        memberId: null == memberId
+            ? _value.memberId
+            : memberId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        memberName: null == memberName
+            ? _value.memberName
+            : memberName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        action: null == action
+            ? _value.action
+            : action // ignore: cast_nullable_to_non_nullable
+                  as LogAction,
+        field: freezed == field
+            ? _value.field
+            : field // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        oldValue: freezed == oldValue
+            ? _value.oldValue
+            : oldValue // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        newValue: freezed == newValue
+            ? _value.newValue
+            : newValue // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        timestamp: null == timestamp
+            ? _value.timestamp
+            : timestamp // ignore: cast_nullable_to_non_nullable
+                  as int,
+        synced: null == synced
+            ? _value.synced
+            : synced // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$OperationLogImpl implements _OperationLog {
-  const _$OperationLogImpl(
-      {required this.id,
-      required this.projectId,
-      this.taskId,
-      required this.memberId,
-      required this.memberName,
-      required this.action,
-      this.field,
-      this.oldValue,
-      this.newValue,
-      required this.timestamp,
-      this.synced = false});
+  const _$OperationLogImpl({
+    required this.id,
+    required this.projectId,
+    this.taskId,
+    required this.memberId,
+    required this.memberName,
+    required this.action,
+    this.field,
+    this.oldValue,
+    this.newValue,
+    required this.timestamp,
+    this.synced = false,
+  });
 
   factory _$OperationLogImpl.fromJson(Map<String, dynamic> json) =>
       _$$OperationLogImplFromJson(json);
@@ -342,8 +354,20 @@ class _$OperationLogImpl implements _OperationLog {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, projectId, taskId, memberId,
-      memberName, action, field, oldValue, newValue, timestamp, synced);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    projectId,
+    taskId,
+    memberId,
+    memberName,
+    action,
+    field,
+    oldValue,
+    newValue,
+    timestamp,
+    synced,
+  );
 
   @JsonKey(ignore: true)
   @override
@@ -353,71 +377,59 @@ class _$OperationLogImpl implements _OperationLog {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OperationLogImplToJson(
-      this,
-    );
+    return _$$OperationLogImplToJson(this);
   }
 }
 
 abstract class _OperationLog implements OperationLog {
-  const factory _OperationLog(
-      {required final String id,
-      required final String projectId,
-      final String? taskId,
-      required final String memberId,
-      required final String memberName,
-      required final LogAction action,
-      final String? field,
-      final String? oldValue,
-      final String? newValue,
-      required final int timestamp,
-      final bool synced}) = _$OperationLogImpl;
+  const factory _OperationLog({
+    required final String id,
+    required final String projectId,
+    final String? taskId,
+    required final String memberId,
+    required final String memberName,
+    required final LogAction action,
+    final String? field,
+    final String? oldValue,
+    final String? newValue,
+    required final int timestamp,
+    final bool synced,
+  }) = _$OperationLogImpl;
 
   factory _OperationLog.fromJson(Map<String, dynamic> json) =
       _$OperationLogImpl.fromJson;
 
   @override
-
   /// UUID v4
   String get id;
   @override
-
   /// 所属项目 ID
   String get projectId;
   @override
-
   /// 关联任务 ID（可选）
   String? get taskId;
   @override
-
   /// 操作人 ID
   String get memberId;
   @override
-
   /// 操作人昵称
   String get memberName;
   @override
-
   /// 操作类型
   LogAction get action;
   @override
-
   /// 修改的字段
   String? get field;
   @override
-
   /// 旧值
   String? get oldValue;
   @override
-
   /// 新值
   String? get newValue;
   @override
-
   /// 时间戳（Unix timestamp）
   int get timestamp;
   @override
-
   /// 是否已同步到其他成员
   bool get synced;
   @override

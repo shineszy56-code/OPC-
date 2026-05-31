@@ -19,8 +19,10 @@ class AICenterScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('AI 中心',
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+        title: const Text(
+          'AI 中心',
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -30,8 +32,7 @@ class AICenterScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // AI 快速操作
-            Text('快速操作',
-                style: Theme.of(context).textTheme.titleMedium),
+            Text('快速操作', style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 12),
             _buildQuickActionCard(
               context,
@@ -64,18 +65,12 @@ class AICenterScreen extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('AI 工作流',
-                    style: Theme.of(context).textTheme.titleMedium),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('管理'),
-                ),
+                Text('AI 工作流', style: Theme.of(context).textTheme.titleMedium),
+                TextButton(onPressed: () {}, child: const Text('管理')),
               ],
             ),
             const SizedBox(height: 8),
-            Expanded(
-              child: _buildWorkflowList(context, ref, aiState),
-            ),
+            Expanded(child: _buildWorkflowList(context, ref, aiState)),
           ],
         ),
       ),
@@ -92,9 +87,7 @@ class AICenterScreen extends ConsumerWidget {
     required VoidCallback onTap,
   }) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
@@ -116,26 +109,29 @@ class AICenterScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600)),
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     const SizedBox(height: 2),
-                    Text(description,
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurface
-                                .withOpacity(0.6))),
+                    Text(
+                      description,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withOpacity(0.6),
+                      ),
+                    ),
                   ],
                 ),
               ),
               Icon(
                 Icons.chevron_right,
-                color: Theme.of(context)
-                    .colorScheme
-                    .onSurface
-                    .withOpacity(0.4),
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4),
               ),
             ],
           ),
@@ -146,7 +142,10 @@ class AICenterScreen extends ConsumerWidget {
 
   /// 构建工作流列表
   Widget _buildWorkflowList(
-      BuildContext context, WidgetRef ref, AIState aiState) {
+    BuildContext context,
+    WidgetRef ref,
+    AIState aiState,
+  ) {
     // TODO: 从 AI 服务获取工作流列表
     final workflows = <AIWorkflow>[];
 
@@ -157,8 +156,7 @@ class AICenterScreen extends ConsumerWidget {
           children: [
             Text('🤖', style: const TextStyle(fontSize: 48)),
             const SizedBox(height: 16),
-            Text('暂无工作流',
-                style: Theme.of(context).textTheme.bodyMedium),
+            Text('暂无工作流', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       );
@@ -177,27 +175,25 @@ class AICenterScreen extends ConsumerWidget {
   Widget _buildWorkflowCard(BuildContext context, AIWorkflow workflow) {
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: SwitchListTile(
         value: workflow.enabled,
         onChanged: (value) {
           // TODO: 启用/禁用工作流
         },
-        title: Text(workflow.name,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-        subtitle: Text(workflow.description,
-            style: TextStyle(
-                fontSize: 14,
-                color: Theme.of(context)
-                    .colorScheme
-                    .onSurface
-                    .withOpacity(0.6))),
-        activeColor: const Color(0xFF6C63FF),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+        title: Text(
+          workflow.name,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
+        subtitle: Text(
+          workflow.description,
+          style: TextStyle(
+            fontSize: 14,
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+          ),
+        ),
+        activeColor: const Color(0xFF6C63FF),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
@@ -260,14 +256,12 @@ class AICenterScreen extends ConsumerWidget {
   void _generateSummary(BuildContext context, WidgetRef ref) {
     final projectId = ref.read(selectedProjectIdProvider);
     if (projectId == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('请先选择一个项目')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('请先选择一个项目')));
       return;
     }
 
-    ref
-        .read(aiStateNotifierProvider.notifier)
-        .executeProjectSummary(projectId);
+    ref.read(aiStateNotifierProvider.notifier).executeProjectSummary(projectId);
   }
 }

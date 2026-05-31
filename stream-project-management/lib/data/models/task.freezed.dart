@@ -12,7 +12,8 @@ part of 'task.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Attachment _$AttachmentFromJson(Map<String, dynamic> json) {
   return _Attachment.fromJson(json);
@@ -36,16 +37,18 @@ mixin _$Attachment {
 /// @nodoc
 abstract class $AttachmentCopyWith<$Res> {
   factory $AttachmentCopyWith(
-          Attachment value, $Res Function(Attachment) then) =
-      _$AttachmentCopyWithImpl<$Res, Attachment>;
+    Attachment value,
+    $Res Function(Attachment) then,
+  ) = _$AttachmentCopyWithImpl<$Res, Attachment>;
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String url,
-      String mimeType,
-      int size,
-      int uploadedAt});
+  $Res call({
+    String id,
+    String name,
+    String url,
+    String mimeType,
+    int size,
+    int uploadedAt,
+  });
 }
 
 /// @nodoc
@@ -68,32 +71,35 @@ class _$AttachmentCopyWithImpl<$Res, $Val extends Attachment>
     Object? size = null,
     Object? uploadedAt = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-      mimeType: null == mimeType
-          ? _value.mimeType
-          : mimeType // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as int,
-      uploadedAt: null == uploadedAt
-          ? _value.uploadedAt
-          : uploadedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            url: null == url
+                ? _value.url
+                : url // ignore: cast_nullable_to_non_nullable
+                      as String,
+            mimeType: null == mimeType
+                ? _value.mimeType
+                : mimeType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            size: null == size
+                ? _value.size
+                : size // ignore: cast_nullable_to_non_nullable
+                      as int,
+            uploadedAt: null == uploadedAt
+                ? _value.uploadedAt
+                : uploadedAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -101,17 +107,19 @@ class _$AttachmentCopyWithImpl<$Res, $Val extends Attachment>
 abstract class _$$AttachmentImplCopyWith<$Res>
     implements $AttachmentCopyWith<$Res> {
   factory _$$AttachmentImplCopyWith(
-          _$AttachmentImpl value, $Res Function(_$AttachmentImpl) then) =
-      __$$AttachmentImplCopyWithImpl<$Res>;
+    _$AttachmentImpl value,
+    $Res Function(_$AttachmentImpl) then,
+  ) = __$$AttachmentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String url,
-      String mimeType,
-      int size,
-      int uploadedAt});
+  $Res call({
+    String id,
+    String name,
+    String url,
+    String mimeType,
+    int size,
+    int uploadedAt,
+  });
 }
 
 /// @nodoc
@@ -119,8 +127,9 @@ class __$$AttachmentImplCopyWithImpl<$Res>
     extends _$AttachmentCopyWithImpl<$Res, _$AttachmentImpl>
     implements _$$AttachmentImplCopyWith<$Res> {
   __$$AttachmentImplCopyWithImpl(
-      _$AttachmentImpl _value, $Res Function(_$AttachmentImpl) _then)
-      : super(_value, _then);
+    _$AttachmentImpl _value,
+    $Res Function(_$AttachmentImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -132,45 +141,48 @@ class __$$AttachmentImplCopyWithImpl<$Res>
     Object? size = null,
     Object? uploadedAt = null,
   }) {
-    return _then(_$AttachmentImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-      mimeType: null == mimeType
-          ? _value.mimeType
-          : mimeType // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as int,
-      uploadedAt: null == uploadedAt
-          ? _value.uploadedAt
-          : uploadedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$AttachmentImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        url: null == url
+            ? _value.url
+            : url // ignore: cast_nullable_to_non_nullable
+                  as String,
+        mimeType: null == mimeType
+            ? _value.mimeType
+            : mimeType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        size: null == size
+            ? _value.size
+            : size // ignore: cast_nullable_to_non_nullable
+                  as int,
+        uploadedAt: null == uploadedAt
+            ? _value.uploadedAt
+            : uploadedAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$AttachmentImpl implements _Attachment {
-  const _$AttachmentImpl(
-      {required this.id,
-      required this.name,
-      required this.url,
-      required this.mimeType,
-      required this.size,
-      required this.uploadedAt});
+  const _$AttachmentImpl({
+    required this.id,
+    required this.name,
+    required this.url,
+    required this.mimeType,
+    required this.size,
+    required this.uploadedAt,
+  });
 
   factory _$AttachmentImpl.fromJson(Map<String, dynamic> json) =>
       _$$AttachmentImplFromJson(json);
@@ -221,20 +233,19 @@ class _$AttachmentImpl implements _Attachment {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AttachmentImplToJson(
-      this,
-    );
+    return _$$AttachmentImplToJson(this);
   }
 }
 
 abstract class _Attachment implements Attachment {
-  const factory _Attachment(
-      {required final String id,
-      required final String name,
-      required final String url,
-      required final String mimeType,
-      required final int size,
-      required final int uploadedAt}) = _$AttachmentImpl;
+  const factory _Attachment({
+    required final String id,
+    required final String name,
+    required final String url,
+    required final String mimeType,
+    required final int size,
+    required final int uploadedAt,
+  }) = _$AttachmentImpl;
 
   factory _Attachment.fromJson(Map<String, dynamic> json) =
       _$AttachmentImpl.fromJson;
@@ -321,23 +332,24 @@ abstract class $TaskCopyWith<$Res> {
   factory $TaskCopyWith(Task value, $Res Function(Task) then) =
       _$TaskCopyWithImpl<$Res, Task>;
   @useResult
-  $Res call(
-      {String id,
-      String projectId,
-      String? parentId,
-      String title,
-      String description,
-      TaskStatus status,
-      TaskPriority priority,
-      int? dueDate,
-      String? assigneeId,
-      bool aiExecutable,
-      AIStatus aiStatus,
-      String? aiResult,
-      List<Attachment> attachments,
-      int createdAt,
-      int updatedAt,
-      String lastModifiedBy});
+  $Res call({
+    String id,
+    String projectId,
+    String? parentId,
+    String title,
+    String description,
+    TaskStatus status,
+    TaskPriority priority,
+    int? dueDate,
+    String? assigneeId,
+    bool aiExecutable,
+    AIStatus aiStatus,
+    String? aiResult,
+    List<Attachment> attachments,
+    int createdAt,
+    int updatedAt,
+    String lastModifiedBy,
+  });
 }
 
 /// @nodoc
@@ -370,99 +382,104 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? updatedAt = null,
     Object? lastModifiedBy = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      projectId: null == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String,
-      parentId: freezed == parentId
-          ? _value.parentId
-          : parentId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as TaskStatus,
-      priority: null == priority
-          ? _value.priority
-          : priority // ignore: cast_nullable_to_non_nullable
-              as TaskPriority,
-      dueDate: freezed == dueDate
-          ? _value.dueDate
-          : dueDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-      assigneeId: freezed == assigneeId
-          ? _value.assigneeId
-          : assigneeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aiExecutable: null == aiExecutable
-          ? _value.aiExecutable
-          : aiExecutable // ignore: cast_nullable_to_non_nullable
-              as bool,
-      aiStatus: null == aiStatus
-          ? _value.aiStatus
-          : aiStatus // ignore: cast_nullable_to_non_nullable
-              as AIStatus,
-      aiResult: freezed == aiResult
-          ? _value.aiResult
-          : aiResult // ignore: cast_nullable_to_non_nullable
-              as String?,
-      attachments: null == attachments
-          ? _value.attachments
-          : attachments // ignore: cast_nullable_to_non_nullable
-              as List<Attachment>,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastModifiedBy: null == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            projectId: null == projectId
+                ? _value.projectId
+                : projectId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            parentId: freezed == parentId
+                ? _value.parentId
+                : parentId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            description: null == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as TaskStatus,
+            priority: null == priority
+                ? _value.priority
+                : priority // ignore: cast_nullable_to_non_nullable
+                      as TaskPriority,
+            dueDate: freezed == dueDate
+                ? _value.dueDate
+                : dueDate // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            assigneeId: freezed == assigneeId
+                ? _value.assigneeId
+                : assigneeId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            aiExecutable: null == aiExecutable
+                ? _value.aiExecutable
+                : aiExecutable // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            aiStatus: null == aiStatus
+                ? _value.aiStatus
+                : aiStatus // ignore: cast_nullable_to_non_nullable
+                      as AIStatus,
+            aiResult: freezed == aiResult
+                ? _value.aiResult
+                : aiResult // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            attachments: null == attachments
+                ? _value.attachments
+                : attachments // ignore: cast_nullable_to_non_nullable
+                      as List<Attachment>,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+            updatedAt: null == updatedAt
+                ? _value.updatedAt
+                : updatedAt // ignore: cast_nullable_to_non_nullable
+                      as int,
+            lastModifiedBy: null == lastModifiedBy
+                ? _value.lastModifiedBy
+                : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$TaskImplCopyWith<$Res> implements $TaskCopyWith<$Res> {
   factory _$$TaskImplCopyWith(
-          _$TaskImpl value, $Res Function(_$TaskImpl) then) =
-      __$$TaskImplCopyWithImpl<$Res>;
+    _$TaskImpl value,
+    $Res Function(_$TaskImpl) then,
+  ) = __$$TaskImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String projectId,
-      String? parentId,
-      String title,
-      String description,
-      TaskStatus status,
-      TaskPriority priority,
-      int? dueDate,
-      String? assigneeId,
-      bool aiExecutable,
-      AIStatus aiStatus,
-      String? aiResult,
-      List<Attachment> attachments,
-      int createdAt,
-      int updatedAt,
-      String lastModifiedBy});
+  $Res call({
+    String id,
+    String projectId,
+    String? parentId,
+    String title,
+    String description,
+    TaskStatus status,
+    TaskPriority priority,
+    int? dueDate,
+    String? assigneeId,
+    bool aiExecutable,
+    AIStatus aiStatus,
+    String? aiResult,
+    List<Attachment> attachments,
+    int createdAt,
+    int updatedAt,
+    String lastModifiedBy,
+  });
 }
 
 /// @nodoc
@@ -470,7 +487,7 @@ class __$$TaskImplCopyWithImpl<$Res>
     extends _$TaskCopyWithImpl<$Res, _$TaskImpl>
     implements _$$TaskImplCopyWith<$Res> {
   __$$TaskImplCopyWithImpl(_$TaskImpl _value, $Res Function(_$TaskImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -492,96 +509,98 @@ class __$$TaskImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? lastModifiedBy = null,
   }) {
-    return _then(_$TaskImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      projectId: null == projectId
-          ? _value.projectId
-          : projectId // ignore: cast_nullable_to_non_nullable
-              as String,
-      parentId: freezed == parentId
-          ? _value.parentId
-          : parentId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as TaskStatus,
-      priority: null == priority
-          ? _value.priority
-          : priority // ignore: cast_nullable_to_non_nullable
-              as TaskPriority,
-      dueDate: freezed == dueDate
-          ? _value.dueDate
-          : dueDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-      assigneeId: freezed == assigneeId
-          ? _value.assigneeId
-          : assigneeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      aiExecutable: null == aiExecutable
-          ? _value.aiExecutable
-          : aiExecutable // ignore: cast_nullable_to_non_nullable
-              as bool,
-      aiStatus: null == aiStatus
-          ? _value.aiStatus
-          : aiStatus // ignore: cast_nullable_to_non_nullable
-              as AIStatus,
-      aiResult: freezed == aiResult
-          ? _value.aiResult
-          : aiResult // ignore: cast_nullable_to_non_nullable
-              as String?,
-      attachments: null == attachments
-          ? _value._attachments
-          : attachments // ignore: cast_nullable_to_non_nullable
-              as List<Attachment>,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastModifiedBy: null == lastModifiedBy
-          ? _value.lastModifiedBy
-          : lastModifiedBy // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$TaskImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        projectId: null == projectId
+            ? _value.projectId
+            : projectId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        parentId: freezed == parentId
+            ? _value.parentId
+            : parentId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as TaskStatus,
+        priority: null == priority
+            ? _value.priority
+            : priority // ignore: cast_nullable_to_non_nullable
+                  as TaskPriority,
+        dueDate: freezed == dueDate
+            ? _value.dueDate
+            : dueDate // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        assigneeId: freezed == assigneeId
+            ? _value.assigneeId
+            : assigneeId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        aiExecutable: null == aiExecutable
+            ? _value.aiExecutable
+            : aiExecutable // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        aiStatus: null == aiStatus
+            ? _value.aiStatus
+            : aiStatus // ignore: cast_nullable_to_non_nullable
+                  as AIStatus,
+        aiResult: freezed == aiResult
+            ? _value.aiResult
+            : aiResult // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        attachments: null == attachments
+            ? _value._attachments
+            : attachments // ignore: cast_nullable_to_non_nullable
+                  as List<Attachment>,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+        updatedAt: null == updatedAt
+            ? _value.updatedAt
+            : updatedAt // ignore: cast_nullable_to_non_nullable
+                  as int,
+        lastModifiedBy: null == lastModifiedBy
+            ? _value.lastModifiedBy
+            : lastModifiedBy // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$TaskImpl implements _Task {
-  const _$TaskImpl(
-      {required this.id,
-      required this.projectId,
-      this.parentId,
-      required this.title,
-      this.description = '',
-      this.status = TaskStatus.todo,
-      this.priority = TaskPriority.medium,
-      this.dueDate,
-      this.assigneeId,
-      this.aiExecutable = false,
-      this.aiStatus = AIStatus.idle,
-      this.aiResult,
-      final List<Attachment> attachments = const [],
-      required this.createdAt,
-      required this.updatedAt,
-      this.lastModifiedBy = ''})
-      : _attachments = attachments;
+  const _$TaskImpl({
+    required this.id,
+    required this.projectId,
+    this.parentId,
+    required this.title,
+    this.description = '',
+    this.status = TaskStatus.todo,
+    this.priority = TaskPriority.medium,
+    this.dueDate,
+    this.assigneeId,
+    this.aiExecutable = false,
+    this.aiStatus = AIStatus.idle,
+    this.aiResult,
+    final List<Attachment> attachments = const [],
+    required this.createdAt,
+    required this.updatedAt,
+    this.lastModifiedBy = '',
+  }) : _attachments = attachments;
 
   factory _$TaskImpl.fromJson(Map<String, dynamic> json) =>
       _$$TaskImplFromJson(json);
@@ -694,8 +713,10 @@ class _$TaskImpl implements _Task {
                 other.aiStatus == aiStatus) &&
             (identical(other.aiResult, aiResult) ||
                 other.aiResult == aiResult) &&
-            const DeepCollectionEquality()
-                .equals(other._attachments, _attachments) &&
+            const DeepCollectionEquality().equals(
+              other._attachments,
+              _attachments,
+            ) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -707,23 +728,24 @@ class _$TaskImpl implements _Task {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      projectId,
-      parentId,
-      title,
-      description,
-      status,
-      priority,
-      dueDate,
-      assigneeId,
-      aiExecutable,
-      aiStatus,
-      aiResult,
-      const DeepCollectionEquality().hash(_attachments),
-      createdAt,
-      updatedAt,
-      lastModifiedBy);
+    runtimeType,
+    id,
+    projectId,
+    parentId,
+    title,
+    description,
+    status,
+    priority,
+    dueDate,
+    assigneeId,
+    aiExecutable,
+    aiStatus,
+    aiResult,
+    const DeepCollectionEquality().hash(_attachments),
+    createdAt,
+    updatedAt,
+    lastModifiedBy,
+  );
 
   @JsonKey(ignore: true)
   @override
@@ -733,95 +755,78 @@ class _$TaskImpl implements _Task {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TaskImplToJson(
-      this,
-    );
+    return _$$TaskImplToJson(this);
   }
 }
 
 abstract class _Task implements Task {
-  const factory _Task(
-      {required final String id,
-      required final String projectId,
-      final String? parentId,
-      required final String title,
-      final String description,
-      final TaskStatus status,
-      final TaskPriority priority,
-      final int? dueDate,
-      final String? assigneeId,
-      final bool aiExecutable,
-      final AIStatus aiStatus,
-      final String? aiResult,
-      final List<Attachment> attachments,
-      required final int createdAt,
-      required final int updatedAt,
-      final String lastModifiedBy}) = _$TaskImpl;
+  const factory _Task({
+    required final String id,
+    required final String projectId,
+    final String? parentId,
+    required final String title,
+    final String description,
+    final TaskStatus status,
+    final TaskPriority priority,
+    final int? dueDate,
+    final String? assigneeId,
+    final bool aiExecutable,
+    final AIStatus aiStatus,
+    final String? aiResult,
+    final List<Attachment> attachments,
+    required final int createdAt,
+    required final int updatedAt,
+    final String lastModifiedBy,
+  }) = _$TaskImpl;
 
   factory _Task.fromJson(Map<String, dynamic> json) = _$TaskImpl.fromJson;
 
   @override
-
   /// UUID v4
   String get id;
   @override
-
   /// 所属项目 ID
   String get projectId;
   @override
-
   /// 父任务 ID（子任务）
   String? get parentId;
   @override
-
   /// 任务标题
   String get title;
   @override
-
   /// 任务描述
   String get description;
   @override
-
   /// 任务状态
   TaskStatus get status;
   @override
-
   /// 优先级
   TaskPriority get priority;
   @override
-
   /// 截止日期（Unix timestamp）
   int? get dueDate;
   @override
-
   /// 负责人 ID
   String? get assigneeId;
   @override
-
   /// 是否可由 AI 自动执行
   bool get aiExecutable;
   @override
-
   /// AI 执行状态
   AIStatus get aiStatus;
   @override
-
   /// AI 生成结果 JSON
   String? get aiResult;
   @override
-
   /// 附件列表
   List<Attachment> get attachments;
   @override
-
   /// 创建时间
   int get createdAt;
   @override
-
   /// 更新时间
   int get updatedAt;
   @override
-
   /// 最后修改人 ID
   String get lastModifiedBy;
   @override

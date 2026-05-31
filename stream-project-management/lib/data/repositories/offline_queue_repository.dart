@@ -26,7 +26,8 @@ class OfflineQueueRepository {
     required Map<String, dynamic> payload,
   }) async {
     final db = await _dbService.database;
-    final id = DateTime.now().millisecondsSinceEpoch.toString() + '_' + recordId;
+    final id =
+        DateTime.now().millisecondsSinceEpoch.toString() + '_' + recordId;
     await db.insert('offline_queue', {
       'id': id,
       'operation_type': operationType,
@@ -113,7 +114,9 @@ class OfflineQueueRepository {
   /// 删除失败超过 7 天的队列项
   Future<void> cleanupOldFailed() async {
     final db = await _dbService.database;
-    final sevenDaysAgo = DateTime.now().subtract(const Duration(days: 7)).millisecondsSinceEpoch;
+    final sevenDaysAgo = DateTime.now()
+        .subtract(const Duration(days: 7))
+        .millisecondsSinceEpoch;
     await db.delete(
       'offline_queue',
       where: 'status = ? AND timestamp < ?',

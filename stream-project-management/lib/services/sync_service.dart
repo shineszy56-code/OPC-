@@ -1,17 +1,12 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/foundation.dart';
-import 'package:uuid/uuid.dart';
 
 import '../core/crypto/encryption_service.dart';
 import '../core/crypto/key_manager.dart';
-import '../data/models/enums.dart';
 import '../data/models/offline_queue.dart';
 import '../data/repositories/offline_queue_repository.dart';
 import '../data/repositories/operation_log_repository.dart';
-import 'share_service.dart';
 
 /// 同步引擎服务
 /// 设计文档 5.1 + 5.4：SyncService - 云端同步、冲突解决、离线队列
@@ -36,8 +31,8 @@ class SyncService {
 
   /// 是否在线
   Future<bool> get isOnline async {
-    final result = await _connectivity.checkConnectivity();
-    return result != ConnectivityResult.none;
+    final results = await _connectivity.checkConnectivity();
+    return !results.contains(ConnectivityResult.none);
   }
 
   /// 同步所有待同步数据
@@ -96,7 +91,7 @@ class SyncService {
 
   /// 从 Cloudflare KV 下载变更
   Future<List<Map<String, dynamic>>> pullChanges(String projectId) async {
-    final projectKey = await _keyManager.getProjectKey(projectId);
+    await _keyManager.getProjectKey(projectId);
 
     // TODO: 实现 Cloudflare Workers API 调用
     // 设计文档 6.2.2: GET /share/{id}
@@ -109,7 +104,7 @@ class SyncService {
     String projectId,
     List<Map<String, dynamic>> changes,
   ) async {
-    for (final change in changes) {
+    for (final _ in changes) {
       // 使用 CRDT 算法合并变更
       // 设计文档 5.1: CRDT 冲突解决
       // TODO: 实现 Yjs CRDT 合并
@@ -138,6 +133,8 @@ class SyncService {
 
   /// 获取同步状态
   Future<SyncStatus> getSyncStatus(String projectId) async {
+    // projectId will scope sync status once Cloudflare sync is wired.
+    projectId;
     final stats = await _queueRepo.getStats();
     final pending = stats['pending'] ?? 0;
     final failed = stats['failed'] ?? 0;
@@ -150,6 +147,8 @@ class SyncService {
 
   /// 获取待同步项数量
   Future<int> getPendingChangeCount(String projectId) async {
+    // projectId will scope pending counts once Cloudflare sync is wired.
+    projectId;
     final stats = await _queueRepo.getStats();
     return stats['pending'] ?? 0;
   }
@@ -171,10 +170,4 @@ class SyncResult {
 }
 
 /// 同步状态枚举
-enum SyncStatus {
-  synced,
-  pending,
-  inProgress,
-  failed,
-  offline,
-}
+enum SyncStatus { synced, pending, inProgress, failed, offline }

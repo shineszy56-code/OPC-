@@ -10,11 +10,7 @@ class OperationLogTimeline extends StatelessWidget {
   final List<OperationLog> logs;
   final int? maxItems;
 
-  const OperationLogTimeline({
-    super.key,
-    required this.logs,
-    this.maxItems,
-  });
+  const OperationLogTimeline({super.key, required this.logs, this.maxItems});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +28,8 @@ class OperationLogTimeline extends StatelessWidget {
       itemCount: displayLogs.length,
       itemBuilder: (context, index) {
         final log = displayLogs[index];
-        final showDateHeader = index == 0 ||
+        final showDateHeader =
+            index == 0 ||
             !_isSameDay(
               DateTime.fromMillisecondsSinceEpoch(log.timestamp),
               DateTime.fromMillisecondsSinceEpoch(
@@ -62,15 +59,9 @@ class OperationLogTimeline extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            '📝',
-            style: Theme.of(context).textTheme.displayMedium,
-          ),
+          Text('📝', style: Theme.of(context).textTheme.displayMedium),
           const SizedBox(height: 8),
-          Text(
-            '暂无操作日志',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
+          Text('暂无操作日志', style: Theme.of(context).textTheme.bodyMedium),
         ],
       ),
     );
@@ -81,10 +72,7 @@ class OperationLogTimeline extends StatelessWidget {
     final date = DateTime.fromMillisecondsSinceEpoch(timestamp);
     final now = DateTime.now();
     final isToday = _isSameDay(date, now);
-    final isYesterday = _isSameDay(
-      date,
-      now.subtract(const Duration(days: 1)),
-    );
+    final isYesterday = _isSameDay(date, now.subtract(const Duration(days: 1)));
 
     String dateText;
     if (isToday) {
@@ -99,12 +87,17 @@ class OperationLogTimeline extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Text(
         dateText,
-        style: Theme.of(context).textTheme.labelMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+        style:
+            Theme.of(context).textTheme.labelMedium?.copyWith(
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.6),
             ) ??
             TextStyle(
               fontSize: 12,
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.6),
             ),
       ),
     );
@@ -130,7 +123,9 @@ class OperationLogTimeline extends StatelessWidget {
               Container(
                 width: 2,
                 height: 40,
-                color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),
+                color: Theme.of(
+                  context,
+                ).colorScheme.outline.withValues(alpha: 0.3),
               ),
             ],
           ],
@@ -169,7 +164,9 @@ class OperationLogTimeline extends StatelessWidget {
                   '${log.field}: ${log.newValue ?? '无'}',
                   style: TextStyle(
                     fontSize: 12,
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.6),
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -181,7 +178,9 @@ class OperationLogTimeline extends StatelessWidget {
                 _formatTime(log.timestamp),
                 style: TextStyle(
                   fontSize: 10,
-                  color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.4),
                 ),
               ),
             ],

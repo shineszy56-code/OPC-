@@ -35,16 +35,16 @@ class WorkflowEngine {
     required Map<String, dynamic> context,
   }) async {
     // 查找匹配的工作流
-    final matchingWorkflows = await _findMatchingWorkflows(triggerType, context);
+    final matchingWorkflows = await _findMatchingWorkflows(
+      triggerType,
+      context,
+    );
     final results = <WorkflowExecutionResult>[];
 
     for (final workflow in matchingWorkflows) {
       if (!workflow.enabled) continue;
 
-      final result = await execute(
-        workflow: workflow,
-        context: context,
-      );
+      final result = await execute(workflow: workflow, context: context);
       results.add(result);
     }
 
@@ -206,13 +206,17 @@ class WorkflowEngine {
       // 支持简单条件：{{variable}} == "value"
       for (final entry in context.entries) {
         final placeholder = '{{${entry.key}}}';
-        condition = condition.replaceAll(placeholder, entry.value?.toString() ?? '');
+        condition = condition.replaceAll(
+          placeholder,
+          entry.value?.toString() ?? '',
+        );
       }
 
       // 简单评估
       if (condition.contains('==')) {
         final parts = condition.split('==');
-        return parts[0].trim() == parts[1].trim().replaceAll('"', '').replaceAll("'", '');
+        return parts[0].trim() ==
+            parts[1].trim().replaceAll('"', '').replaceAll("'", '');
       }
 
       return false;
@@ -228,7 +232,10 @@ class WorkflowEngine {
   }
 
   /// 执行并行步骤
-  Future<String> _executeParallel(AIStep step, Map<String, dynamic> context) async {
+  Future<String> _executeParallel(
+    AIStep step,
+    Map<String, dynamic> context,
+  ) async {
     // TODO: 实现并行执行逻辑
     return 'Parallel executed';
   }
@@ -260,18 +267,20 @@ class WorkflowEngine {
     WorkflowExecutionResult result,
   ) async {
     final deviceId = await _keyManager.getDeviceId();
-    await _logRepo.create(OperationLog(
-      id: const Uuid().v4(),
-      projectId: result.context?['projectId'] ?? '',
-      memberId: deviceId,
-      memberName: 'AI Workflow',
-      action: LogAction.update,
-      field: 'workflow_execution',
-      oldValue: workflow.name,
-      newValue: result.success ? '成功' : '失败: ${result.errorMessage}',
-      timestamp: DateTime.now().millisecondsSinceEpoch,
-      synced: false,
-    ));
+    await _logRepo.create(
+      OperationLog(
+        id: const Uuid().v4(),
+        projectId: result.context?['projectId'] ?? '',
+        memberId: deviceId,
+        memberName: 'AI Workflow',
+        action: LogAction.update,
+        field: 'workflow_execution',
+        oldValue: workflow.name,
+        newValue: result.success ? '成功' : '失败: ${result.errorMessage}',
+        timestamp: DateTime.now().millisecondsSinceEpoch,
+        synced: false,
+      ),
+    );
   }
 
   /// 获取活跃执行
@@ -357,10 +366,4 @@ class StepExecutionResult {
 }
 
 /// 工作流执行状态
-enum WorkflowExecutionStatus {
-  pending,
-  running,
-  completed,
-  failed,
-  cancelled,
-}
+enum WorkflowExecutionStatus { pending, running, completed, failed, cancelled }
